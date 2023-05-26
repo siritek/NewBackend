@@ -10,5 +10,5 @@ public interface FnolService {
 
     public void saveFnol(Fnol fnol);
 
-    public List<Fnol> getAllfnols() ;
+    public List<Fnol> getAllfnols();
 }

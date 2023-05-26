@@ -1,16 +1,36 @@
 package com.example.withoutdb.model;
 
 import java.util.Date;
+import java.sql.*;
 
 public class Fnol {
-    //ClaimNumber,LossLocation,Time-ofLoss,ReportedBy,PolicyNumber
 
-    private int claimnumber;
+
+
+    private int policynumber;
     private Date lossdate;
     private String losslocation;
-    private String timeofloss;
+    private Time timeofloss;
+
+    private String lossdescription;
     private String reportedby;
     private Date datereported;
+
+    public int getPolicynumber() {
+        return policynumber;
+    }
+
+    public void setPolicynumber(int policynumber) {
+        this.policynumber = policynumber;
+    }
+
+    public String getLossdescription() {
+        return lossdescription;
+    }
+
+    public void setLossdescription(String lossdescription) {
+        this.lossdescription = lossdescription;
+    }
 
     public Date getLossdate() {
         return lossdate;
@@ -28,17 +48,11 @@ public class Fnol {
         this.datereported = datereported;
     }
 
-    private String policynumber;
+
     public Fnol() {
     }
 
-    public int getClaimnumber() {
-        return claimnumber;
-    }
 
-    public void setClaimnumber(int claimnumber) {
-        this.claimnumber = claimnumber;
-    }
 
     public String getLosslocation() {
         return losslocation;
@@ -48,11 +62,11 @@ public class Fnol {
         this.losslocation = losslocation;
     }
 
-    public String getTimeofloss() {
+    public Time getTimeofloss() {
         return timeofloss;
     }
 
-    public void setTimeofloss(String timeofloss) {
+    public void setTimeofloss(Time timeofloss) {
         this.timeofloss = timeofloss;
     }
 
@@ -62,14 +76,6 @@ public class Fnol {
 
     public void setReportedby(String reportedby) {
         this.reportedby = reportedby;
-    }
-
-    public String getPolicynumber() {
-        return policynumber;
-    }
-
-    public void setPolicynumber(String policynumber) {
-        this.policynumber = policynumber;
     }
 
 

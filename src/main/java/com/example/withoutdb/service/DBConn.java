@@ -1,8 +1,10 @@
 package com.example.withoutdb.service;
 
+import org.springframework.stereotype.Service;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
-
+@Service
 public class DBConn {
     public static Connection getMyConnection() {
 

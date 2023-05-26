@@ -1,5 +1,7 @@
 package com.example.withoutdb.controller;
 
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 import com.example.withoutdb.model.Fnol;
@@ -12,9 +14,10 @@ import org.springframework.web.bind.annotation.*;
 public class FnolController {
 
 
+
     private FnolServiceImpl fnolService = new FnolServiceImpl();
 
-    @PostMapping("/add")
+    @PostMapping("/add{myFnolData}")
     public String add(@RequestBody Fnol fnol){
         fnolService.saveFnol(fnol);
         System.out.println("Connection reached Controller");
