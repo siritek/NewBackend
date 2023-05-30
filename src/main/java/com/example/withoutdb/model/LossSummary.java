@@ -1,7 +1,7 @@
-package com.NewNotepage.NewNote.Model;
+package com.example.withoutdb.model;
 
-
-import java.sql.*;
+import java.sql.Time;
+import java.util.Date;
 
 public class LossSummary {
 
@@ -10,6 +10,7 @@ public class LossSummary {
     //Loss Cause
     //Other Description
     //Type of Loss
+    //Weather Involved
     //Weather Involved
     //Weather Description
     //Date of loss*
@@ -167,7 +168,7 @@ public class LossSummary {
     }
 
     public void setDateOfLoss(Date dateOfLoss) {
-        DateOfLoss = dateOfLoss;
+        DateOfLoss = (java.sql.Date) dateOfLoss;
     }
 
     public Time getTimeOfLoss() {

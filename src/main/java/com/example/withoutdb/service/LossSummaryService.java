@@ -1,8 +1,8 @@
-package com.NewNotepage.NewNote.Service;
+package com.example.withoutdb.service;
+
+import com.example.withoutdb.model.LossSummary;
 
 import java.util.List;
-import java.sql.SQLException;
-import com.NewNotepage.NewNote.Model.LossSummary;
 
 public interface LossSummaryService {
     public void saveLossSummary(LossSummary losssummary);

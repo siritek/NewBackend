@@ -1,16 +1,14 @@
-package com.NewNotepage.NewNote.Controller;
+package com.example.withoutdb.controller;
 
+
+import com.example.withoutdb.model.LossSummary;
+import com.example.withoutdb.service.LossSummaryServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
-
-import com.NewNotepage.NewNote.Model.LossSummary;
-import com.NewNotepage.NewNote.Service.LossSummaryServiceImpl;
-
-
-
 import java.util.List;
+
 @RestController
-@RequestMapping("/losssummaryfirst")
+//@RequestMapping("/fnolfirst")
 @CrossOrigin
 public class LossSummaryController {
     private LossSummaryServiceImpl LossSummaryService = new LossSummaryServiceImpl();

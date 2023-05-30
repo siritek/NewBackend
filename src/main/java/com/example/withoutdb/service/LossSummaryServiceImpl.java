@@ -1,4 +1,7 @@
-package com.NewNotepage.NewNote.Service;
+package com.example.withoutdb.service;
+
+import com.example.withoutdb.model.LossSummary;
+import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,8 +10,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.NewNotepage.NewNote.Model.LossSummary;
-import org.springframework.stereotype.Service;
 @Service
 public class LossSummaryServiceImpl implements LossSummaryService {
 
@@ -27,7 +28,8 @@ public class LossSummaryServiceImpl implements LossSummaryService {
             ps.setString(5, losssummary.getTypeOfLoss());
             ps.setString(6, losssummary.getWeatherInvolved());
             ps.setString(7, losssummary.getWeatherDescription());
-            ps.setDate(8, losssummary.getDateOfLoss());
+            java.sql.Date dateofloss = new java.sql.Date(losssummary.getDateOfLoss().getTime());
+            ps.setDate(8,dateofloss);
             ps.setTime(9, losssummary.getTimeOfLoss());
             ps.setString(10, losssummary.getLocation());
             ps.setString(11, losssummary.getAddress1());

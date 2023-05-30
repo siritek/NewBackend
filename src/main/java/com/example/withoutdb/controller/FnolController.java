@@ -24,7 +24,7 @@ public class FnolController {
         return "New FNOL info is added";
     }
 
-    @GetMapping("/getAll")
+    @GetMapping("/getAll{myFnolData}")
     public List<Fnol> getAllfnols() {
         return fnolService.getAllfnols();
     }

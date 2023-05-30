@@ -10,8 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping("/fnolfirst")
-
+//@RequestMapping("/fnolfirst")
 @CrossOrigin
 
 
@@ -23,7 +22,7 @@ public class PolicyinformationController {
 
     private PolicyinformationServiceImpl policyinformationService = new PolicyinformationServiceImpl();
 
-    @PostMapping("/add{myPolicyInfo}")
+    @PostMapping("/add")
     public String add(@RequestBody Policyinformation policyinformation){
         policyinformationService.savePolicyinformation(policyinformation);
         System.out.println("Connection reached Controller");
