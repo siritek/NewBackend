@@ -10,28 +10,8 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
-//@RequestMapping("/fnolfirst")
 @CrossOrigin
 
 
 public class PolicyinformationController {
-
-
-
-    @Autowired
-
-    private PolicyinformationServiceImpl policyinformationService = new PolicyinformationServiceImpl();
-
-    @PostMapping("/add")
-    public String add(@RequestBody Policyinformation policyinformation){
-        policyinformationService.savePolicyinformation(policyinformation);
-        System.out.println("Connection reached Controller");
-        //System.out.println(policyinformation.getDateOfLoss());
-        return "New Policyinformation info is added";
-    }
-
-    @GetMapping("/getAll")
-    public List<Policyinformation> getAllpolicyinformations() {
-        return policyinformationService.getAllpolicyinformations();
-    }
 }

@@ -1,24 +1,28 @@
 package com.example.withoutdb.controller;
 
 import com.example.withoutdb.model.Common;
+import com.example.withoutdb.model.Fnol;
 import com.example.withoutdb.service.CommonServiceImpl;
 import org.springframework.web.bind.annotation.*;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
-@RequestMapping("/fnolfirst")
-@CrossOrigin
-
+@CrossOrigin(origins = "http://localhost:3000")
+@RequestMapping("/common")
 
 public class CommonController {
 
     private CommonServiceImpl CommonService = new CommonServiceImpl();
 
-//    @PostMapping("/add")
-//    public String add(@RequestBody Common common){
-//        CommonService.saveCommon(common);
-//        System.out.println("Connection reached Controller");
-//        return "New common info is added";
- //   }
+    @PostMapping("/add")
+    public String add(@RequestBody Common common){
+        try {
+            CommonService.saveCommon(common);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return "";
+    }
 
 
 

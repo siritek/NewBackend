@@ -22,17 +22,9 @@ public class FnolServiceImpl implements FnolService {
         try {
             Connection con = DBConn.getMyConnection();
             PreparedStatement ps = con.prepareStatement("INSERT INTO fnol (PolicyNumber,DateofLoss, LossLocation, TimeofLoss, LossDescription, Reportedby, DateReporetd) VALUES (?, ?, ?, ?, ?,?,?)");
-            System.out.println(fnol.getLosslocation() + " " + fnol.getTimeofloss() +" " + fnol.getReportedby() +  " " + fnol.getPolicynumber() +" "+fnol.getLossdate() );
 
-            ps.setInt(1, fnol.getPolicynumber());
-            java.sql.Date dateofloss = new java.sql.Date(fnol.getLossdate().getTime());
-            ps.setDate(2,  dateofloss);
-            ps.setString(3, fnol.getLosslocation());
-            ps.setTime(4, fnol.getTimeofloss());
-            ps.setString(5,fnol.getLossdescription());
-            ps.setString(6, fnol.getReportedby());
-            java.sql.Date reportedby = new java.sql.Date(fnol.getDatereported().getTime());
-            ps.setDate(7,reportedby);
+            ps.setInt(1, Integer.parseInt(fnol.getPolicyNumber()));
+
 
 
             ps.executeUpdate(); // Execute the insert statement
@@ -60,13 +52,7 @@ public class FnolServiceImpl implements FnolService {
             {
                 x = new Fnol();
 
-                x.setPolicynumber(rs.getInt(1));
-                x.setLossdate(rs.getDate(2));
-                x.setLosslocation(rs.getString(3));
-                x.setTimeofloss(rs.getTime(4));
-                x.setLossdescription(rs.getString(5));
-                x.setReportedby(rs.getString(6));
-                x.setDatereported(rs.getDate(7));
+                x.setPolicyNumber(Integer.toString(rs.getInt(1)));
 
                 allfnols.add(x);
             }

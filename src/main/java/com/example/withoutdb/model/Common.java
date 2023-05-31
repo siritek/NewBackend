@@ -1,42 +1,40 @@
 package com.example.withoutdb.model;
 
 public class Common {
+    private Fnol fnolData;
+    private Policyinformation policyInfoData;
+    private LossSummary lossData;
+    private Exposure exposureData;
 
-    private String Fnol;
-    private String Exposure;
-    private  String LossSummary;
-    private  String Policyinformation;
-
-
-    public String getFnol() {
-        return Fnol;
+    public Fnol getFnolData() {
+        return fnolData;
     }
 
-    public void setFnol(String fnol) {
-        Fnol = fnol;
+    public void setFnolData(Fnol fnolData) {
+        this.fnolData = fnolData;
     }
 
-    public String getExposure() {
-        return Exposure;
+    public Policyinformation getPolicyInfoData() {
+        return policyInfoData;
     }
 
-    public void setExposure(String exposure) {
-        Exposure = exposure;
+    public void setPolicyInfoData(Policyinformation policyInfoData) {
+        this.policyInfoData = policyInfoData;
     }
 
-    public String getLossSummary() {
-        return LossSummary;
+    public LossSummary getLossData() {
+        return lossData;
     }
 
-    public void setLossSummary(String lossSummary) {
-        LossSummary = lossSummary;
+    public void setLossData(LossSummary lossData) {
+        this.lossData = lossData;
     }
 
-    public String getPolicyinformation() {
-        return Policyinformation;
+    public Exposure getExposureData() {
+        return exposureData;
     }
 
-    public void setPolicyinformation(String policyinformation) {
-        Policyinformation = policyinformation;
+    public void setExposureData(Exposure exposureData) {
+        this.exposureData = exposureData;
     }
 }
