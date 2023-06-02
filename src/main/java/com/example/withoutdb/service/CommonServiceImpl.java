@@ -17,9 +17,9 @@ public class CommonServiceImpl  implements  CommonService {
             LossSummary lossSummary = common.getLossData();
             Exposure exposure = common.getExposureData();
 
-            new FnolServiceImpl().saveFnol(fnol);
-            new PolicyinformationServiceImpl().savePolicyinformation(policyinformation);
-            new LossSummaryServiceImpl().saveLossSummary(lossSummary);
+           new FnolServiceImpl().saveFnol(fnol);
+           new PolicyinformationServiceImpl().savePolicyinformation(policyinformation);
+           new LossSummaryServiceImpl().saveLossSummary(lossSummary);
             new ExposureServiceImpl().saveExposure(exposure);
 
         } catch (Exception e) {

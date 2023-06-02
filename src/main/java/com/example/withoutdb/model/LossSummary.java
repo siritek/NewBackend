@@ -5,197 +5,189 @@ import java.util.Date;
 
 public class LossSummary {
 
-    //Adjuster
-    //Loss Description
-    //Loss Cause
-    //Other Description
-    //Type of Loss
-    //Weather Involved
-    //Weather Involved
-    //Weather Description
-    //Date of loss*
-    //Time of loss*
-    //Location
-    //Address 1
-    //Address 2
-    //Address 3
-    // Country
-    // City
-    // State
-    // Zip Code
-    // Jurisdiction
 
-    private String Adjuster;
-    private String LossDescription;
-    private String LossCause;
-    private String OtherDescription;
-    private String TypeOfLoss;
-    private String WeatherInvolved;
-    private String WeatherDescription;
+    private String adjuster;
+    private String lossDescription;
+    private String lossCause;
+    private String otherDescription;
+    private String typeOfLoss;
+    private String weatherInvolved;   //weatherInvloved
+    private String weatherDescription;
 
-    private String Location;
-    private String Address1;
-    private String Address2;
-    private String Address3;
+    private String location;
+    private String address1;
+    private String address2;
+    private String address3;
 
-    private String Country;
+    private String country;
 
-    private String City;
-    private String State;
+    private String city;
+    private String state;
 
-    private Integer ZipCode;
-    private String Jurisdiction;
-    private java.sql.Date DateOfLoss;
-    private Time TimeOfLoss;
+    private String zipCode;
+    private String jurisdiction;
+    private String dateOfLoss;
+    private String timeOfLoss;
+    private  String reportedBy;
+    private  String relationshipToInsured;
 
-    public LossSummary() {
+    public String getReportedBy() {
+        return reportedBy;
+    }
+
+    public void setReportedBy(String reportedBy) {
+        this.reportedBy = reportedBy;
+    }
+
+    public String getRelationshipToInsured() {
+        return relationshipToInsured;
+    }
+
+    public void setRelationshipToInsured(String relationshipToInsured) {
+        this.relationshipToInsured = relationshipToInsured;
     }
 
     public String getAdjuster() {
-        return Adjuster;
+        return adjuster;
     }
 
     public void setAdjuster(String adjuster) {
-        Adjuster = adjuster;
+        this.adjuster = adjuster;
     }
 
     public String getLossDescription() {
-        return LossDescription;
+        return lossDescription;
     }
 
     public void setLossDescription(String lossDescription) {
-        LossDescription = lossDescription;
+        this.lossDescription = lossDescription;
     }
 
     public String getLossCause() {
-        return LossCause;
+        return lossCause;
     }
 
     public void setLossCause(String lossCause) {
-        LossCause = lossCause;
+        this.lossCause = lossCause;
     }
 
     public String getOtherDescription() {
-        return OtherDescription;
+        return otherDescription;
     }
 
     public void setOtherDescription(String otherDescription) {
-        OtherDescription = otherDescription;
+        this.otherDescription = otherDescription;
     }
 
     public String getTypeOfLoss() {
-        return TypeOfLoss;
+        return typeOfLoss;
     }
 
     public void setTypeOfLoss(String typeOfLoss) {
-        TypeOfLoss = typeOfLoss;
-    }
-
-    public String getLocation() {
-        return Location;
-    }
-
-    public void setLocation(String location) {
-        Location = location;
-    }
-
-    public String getAddress1() {
-        return Address1;
-    }
-
-    public void setAddress1(String address1) {
-        Address1 = address1;
-    }
-
-    public String getAddress2() {
-        return Address2;
-    }
-
-    public void setAddress2(String address2) {
-        Address2 = address2;
-    }
-
-    public String getAddress3() {
-        return Address3;
-    }
-
-    public void setAddress3(String address3) {
-        Address3 = address3;
-    }
-
-    public String getCountry() {
-        return Country;
-    }
-
-    public void setCountry(String country) {
-        Country = country;
-    }
-
-    public String getCity() {
-        return City;
-    }
-
-    public void setCity(String city) {
-        City = city;
-    }
-
-    public String getState() {
-        return State;
-    }
-
-    public void setState(String state) {
-        State = state;
-    }
-
-    public Integer getZipCode() {
-        return ZipCode;
-    }
-
-    public void setZipCode(Integer zipCode) {
-        ZipCode = zipCode;
-    }
-
-    public String getJurisdiction() {
-        return Jurisdiction;
-    }
-
-    public void setJurisdiction(String jurisdiction) {
-        Jurisdiction = jurisdiction;
-    }
-
-    public Date getDateOfLoss() {
-        return DateOfLoss;
-    }
-
-    public void setDateOfLoss(Date dateOfLoss) {
-        DateOfLoss = (java.sql.Date) dateOfLoss;
-    }
-
-    public Time getTimeOfLoss() {
-        return TimeOfLoss;
-    }
-
-    public void setTimeOfLoss(Time timeOfLoss) {
-        TimeOfLoss = timeOfLoss;
+        this.typeOfLoss = typeOfLoss;
     }
 
     public String getWeatherInvolved() {
-        return WeatherInvolved;
+        return weatherInvolved;
     }
 
     public void setWeatherInvolved(String weatherInvolved) {
-        WeatherInvolved = weatherInvolved;
+        this.weatherInvolved = weatherInvolved;
     }
 
     public String getWeatherDescription() {
-        return WeatherDescription;
+        return weatherDescription;
     }
 
     public void setWeatherDescription(String weatherDescription) {
-        WeatherDescription = weatherDescription;
+        this.weatherDescription = weatherDescription;
     }
 
+    public String getLocation() {
+        return location;
+    }
 
+    public void setLocation(String location) {
+        this.location = location;
+    }
 
+    public String getAddress1() {
+        return address1;
+    }
 
+    public void setAddress1(String address1) {
+        this.address1 = address1;
+    }
+
+    public String getAddress2() {
+        return address2;
+    }
+
+    public void setAddress2(String address2) {
+        this.address2 = address2;
+    }
+
+    public String getAddress3() {
+        return address3;
+    }
+
+    public void setAddress3(String address3) {
+        this.address3 = address3;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
+    }
+
+    public String getJurisdiction() {
+        return jurisdiction;
+    }
+
+    public void setJurisdiction(String jurisdiction) {
+        this.jurisdiction = jurisdiction;
+    }
+
+    public String getDateOfLoss() {
+        return dateOfLoss;
+    }
+
+    public void setDateOfLoss(String dateOfLoss) {
+        this.dateOfLoss = dateOfLoss;
+    }
+
+    public String getTimeOfLoss() {
+        return timeOfLoss;
+    }
+
+    public void setTimeOfLoss(String timeOfLoss) {
+        this.timeOfLoss = timeOfLoss;
+    }
 }

@@ -2,10 +2,7 @@ package com.example.withoutdb.service;
 
 import com.example.withoutdb.model.Exposure;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,23 +11,18 @@ public class ExposureServiceImpl implements ExposureService {
     @Override
     public void saveExposure(Exposure exposure) {
         try {
+            DateTimeUtil dateTimeUtil = new DateTimeUtil();
             Connection con = DBConn.getMyConnection();
-            PreparedStatement ps = con.prepareStatement("INSERT INTO exposure (lossparty , primarycoverage, adjuster, status, creationdate, claimant, claimanttype, primaryphone, address) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            System.out.println(exposure.getLossparty() + " " + exposure.getPrimarycoverage()+ " " + exposure.getAdjuster() +" " + exposure.getStatus() +  " " + exposure.getStatus() +  " " + exposure.getClaimant() +  " " + exposure.getClaimanttype() +  " " + exposure.getPrimaryphone() +  " " + exposure.getAddress() );
-            ps.setString(1, exposure.getLossparty());
-            ps.setString(2, exposure.getPrimarycoverage());
+            PreparedStatement ps = con.prepareStatement("INSERT INTO exposures(lossparty , primarycoverage, Adjuster, ExposuresStatus, CreationDate, Claimant, ClaimantType, Phone, Address) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    //       System.out.println(exposure.getLossParty() + " " + exposure.getPrimaryCoverage()+ " " + exposure.getAdjuster() +" " + exposure.getStatus() +  " " + exposure.getStatus() +  " " + exposure.getClaimant() +  " " + exposure.getClaimantType() +  " " + exposure.getPrimaryPhone() +  " " + exposure.getAddress() );
+            ps.setString(1, exposure.getLossParty());
+            ps.setString(2, exposure.getPrimaryCoverage());
             ps.setString(3, exposure.getAdjuster());
             ps.setString(4, exposure.getStatus());
-
-            java.sql.Date creationDate = new java.sql.Date(exposure.getCreationdate().getTime());
-            /*java.util.Date utilDate = creationDate.getTime();
-            java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());*/
-            ps.setDate(5, creationDate);
-
-            //ps.setString(5, exposure.getCreationdate().toString());
+            ps.setDate(5, Date.valueOf(dateTimeUtil.toDate(exposure.getCreationDate())));
             ps.setString(6, exposure.getClaimant());
-            ps.setString(7, exposure.getClaimanttype());
-            ps.setString(8, exposure.getPrimaryphone());
+            ps.setString(7, exposure.getClaimantType());
+            ps.setString(8, exposure.getPrimaryPhone());
             ps.setString(9, exposure.getAddress());
 
 
@@ -58,14 +50,14 @@ public class ExposureServiceImpl implements ExposureService {
             while(rs.next())
             {
                 x = new Exposure();
-                x.setLossparty(rs.getString(1));
-                x.setPrimarycoverage(rs.getString(2));
+              //  x.setLossparty(rs.getString(1));
+             //   x.setPrimarycoverage(rs.getString(2));
                 x.setAdjuster(rs.getString(3));
                 x.setStatus(rs.getString(4));
-                x.setCreationdate(rs.getDate(5));
+              //  x.setCreationdate(rs.getDate(5));
                 x.setClaimant(rs.getString(6));
-                x.setClaimanttype(rs.getString(7));
-                x.setPrimaryphone(rs.getString(8));
+             //   x.setClaimanttype(rs.getString(7));
+             //   x.setPrimaryphone(rs.getString(8));
                 x.setAddress(rs.getString(9));
                 allexposures.add(x);
             }

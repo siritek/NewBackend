@@ -3,10 +3,8 @@ package com.example.withoutdb.service;
 import com.example.withoutdb.model.LossSummary;
 import org.springframework.stereotype.Service;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,29 +15,54 @@ public class LossSummaryServiceImpl implements LossSummaryService {
     @Override
     public void saveLossSummary(LossSummary losssummary) {
         try {
+            DateTimeUtil dateTimeUtil = new DateTimeUtil();
+
             Connection con = DBConn.getMyConnection();
-            PreparedStatement ps = con.prepareStatement("INSERT INTO losssummary (Adjuster ,LossDescription, LossCause,OtherDescription,TypeOfLoss, WeatherInvolved, WeatherDescription,Location, Address1,Address2, Address3,Country,City,State,ZipCode,Jurisdiction,DateOfLoss,TimeOfLoss) VALUES (?, ?, ?, ?, ?, ?,?,?,?,?,?,?,?,?,?,?,?,?)");
-            System.out.println(losssummary.getAdjuster() + " " + losssummary.getLossDescription() + " " + losssummary.getLossCause() +" " + losssummary.getOtherDescription() +  " " + losssummary.getTypeOfLoss() +  " " + losssummary.getWeatherInvolved()+  " " + losssummary.getWeatherDescription()+  " " + losssummary.getLocation()+  " " + losssummary.getAddress1() +  " " + losssummary.getAddress2()
-                    +  " " + losssummary.getAddress3()+  " " + losssummary.getCountry()+  " " + losssummary.getCity()+  " " + losssummary.getState()+  " " + losssummary.getZipCode()+  " " + losssummary.getJurisdiction()+  " " + losssummary.getDateOfLoss()+  " " + losssummary.getTimeOfLoss());
+            PreparedStatement ps = con.prepareStatement("INSERT INTO losssummary (Adjuster, LossDescription, OtherDescription, typeofloss, LossCause, WeatherInvolved, WeatherDescription, DateofLoss, TimeofLoss, Reportedby, Relationshiptoinsured, Location, address1, address2, address3, countries, city, zipcode, state, jurisdiction) VALUES (?, ?, ?, ?, ?, ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+//            System.out.println("adjuster"+ losssummary.getAdjuster());
+//            System.out.println("description"+losssummary.getLossDescription());
+//            System.out.println("losscause"+losssummary.getLossCause());
+//            System.out.println("otherdes"+losssummary.getOtherDescription());
+//            System.out.println("typeofloss"+losssummary.getTypeOfLoss());
+//            System.out.println("weather"+losssummary.getWeatherInvolved());
+//            System.out.println("weatherd"+losssummary.getWeatherDescription());
+//            System.out.println( "location"+losssummary.getLocation());
+//            System.out.println(  "address1"+ losssummary.getAddress1() );
+//            System.out.println("address2"+ losssummary.getAddress2() );
+//            System.out.println("address3"+ losssummary.getAddress3());
+//            System.out.println("country"+losssummary.getCountry());
+//            System.out.println("city"+losssummary.getCity());
+//            System.out.println("state"+losssummary.getState());
+//            System.out.println( "zip"+losssummary.getZipCode());
+//            System.out.println("jud"+ losssummary.getJurisdiction());
+//            System.out.println( "date"+losssummary.getDateOfLoss());
+//            System.out.println( "relation"+losssummary.getRelationshipToInsured());
+//            System.out.println("reportedby"+losssummary.getReportedBy());
+//            System.out.println("time"+losssummary.getTimeOfLoss());
+
+//Adjuster, LossDescription, OtherDescription, typeofloss, LossCause, WeatherInvolved, WeatherDescription, DateofLoss, TimeofLoss, Reportedby, Relationshiptoinsured,
+// Location, address1, address2, address3, countries, city, zipcode, state, jurisdiction
+
             ps.setString(1, losssummary.getAdjuster());
             ps.setString(2, losssummary.getLossDescription());
-            ps.setString(3, losssummary.getLossCause());
-            ps.setString(4, losssummary.getOtherDescription());
-            ps.setString(5, losssummary.getTypeOfLoss());
+            ps.setString(5, losssummary.getLossCause());
+            ps.setString(3, losssummary.getOtherDescription());
+            ps.setString(4, losssummary.getTypeOfLoss());
             ps.setString(6, losssummary.getWeatherInvolved());
-            ps.setString(7, losssummary.getWeatherDescription());
-            java.sql.Date dateofloss = new java.sql.Date(losssummary.getDateOfLoss().getTime());
-            ps.setDate(8,dateofloss);
-            ps.setTime(9, losssummary.getTimeOfLoss());
-            ps.setString(10, losssummary.getLocation());
-            ps.setString(11, losssummary.getAddress1());
-            ps.setString(12, losssummary.getAddress2());
-            ps.setString(13, losssummary.getAddress3());
-            ps.setString(14, losssummary.getCountry());
-            ps.setString(15, losssummary.getCity());
-            ps.setString(16, losssummary.getState());
-            ps.setInt(17, losssummary.getZipCode());
-            ps.setString(18, losssummary.getJurisdiction());
+            ps.setString(7, losssummary.getWeatherDescription()); // need check for the data tinyint
+            ps.setDate(8, Date.valueOf(dateTimeUtil.toDate(losssummary.getDateOfLoss())));
+            ps.setTime(9, Time.valueOf(dateTimeUtil.toTime(losssummary. getTimeOfLoss())));
+            ps.setString(10,losssummary.getReportedBy());
+            ps.setString(11,losssummary.getRelationshipToInsured());
+            ps.setString(12, losssummary.getLocation());
+            ps.setString(13, losssummary.getAddress1());
+            ps.setString(14,losssummary.getAddress2());
+            ps.setString(15, losssummary.getAddress3());
+            ps.setString(16, losssummary.getCountry());
+            ps.setString(17, losssummary.getCity());
+            ps.setString(19, losssummary.getState());
+            ps.setString(18, losssummary.getZipCode());
+            ps.setString(20, losssummary.getJurisdiction());
 
             ps.executeUpdate(); // Execute the insert statement
 
@@ -72,8 +95,8 @@ public class LossSummaryServiceImpl implements LossSummaryService {
                 x.setTypeOfLoss(rs.getString(5));
                 x.setWeatherInvolved(rs.getString(6));
                 x.setWeatherDescription(rs.getString(7));
-                x.setDateOfLoss(rs.getDate(8));
-                x.setTimeOfLoss(rs.getTime(9));
+                //x.setDateOfLoss(rs.getDate(8));
+                //   x.setTimeOfLoss(rs.getTime(9));
                 x.setLocation(rs.getString(10));
                 x.setAddress1(rs.getString(11));
                 x.setAddress2(rs.getString(12));
@@ -81,7 +104,7 @@ public class LossSummaryServiceImpl implements LossSummaryService {
                 x.setCountry(rs.getString(14));
                 x.setCity(rs.getString(15));
                 x.setState(rs.getString(16));
-                x.setZipCode(rs.getInt(17));
+                //x.setZipCode(rs.getInt(17));
                 x.setJurisdiction(rs.getString(18));
 
                 alllosssummarys.add(x);

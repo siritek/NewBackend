@@ -16,15 +16,30 @@ public class FnolServiceImpl implements FnolService {
 
 
 
+
     @Override
 
     public void saveFnol(Fnol fnol) {
         try {
+
+            DateTimeUtil dateTimeUtil = new DateTimeUtil();
+
+//            System.out.println(fnol.getPolicyNumber());
+//            System.out.println(fnol.getDateOfLoss());
+//            System.out.println(fnol.getLossLocation());
+//            System.out.println(fnol.getLossTime());
+//            System.out.println(fnol.getReportedBy());
+//            System.out.println(fnol.getDateOfReport());
+
             Connection con = DBConn.getMyConnection();
-            PreparedStatement ps = con.prepareStatement("INSERT INTO fnol (PolicyNumber,DateofLoss, LossLocation, TimeofLoss, LossDescription, Reportedby, DateReporetd) VALUES (?, ?, ?, ?, ?,?,?)");
+            PreparedStatement ps = con.prepareStatement("INSERT INTO fnol (PolicyNumber,DateofLoss, LossLocation, TimeofLoss,  Reportedby, DateReporetd) VALUES (?, ?, ?, ?, ?,?)");
 
             ps.setInt(1, Integer.parseInt(fnol.getPolicyNumber()));
-
+            ps.setDate(2, Date.valueOf(dateTimeUtil.toDate(fnol.getDateOfLoss())));
+            ps.setString(3,fnol.getLossLocation());
+            ps.setTime(4, Time.valueOf(dateTimeUtil.toTime(fnol.getLossTime())));
+            ps.setString(5,fnol.getReportedBy());
+            ps.setDate(6, Date.valueOf(dateTimeUtil.toDate(fnol.getDateOfReport())));
 
 
             ps.executeUpdate(); // Execute the insert statement
@@ -70,3 +85,15 @@ public class FnolServiceImpl implements FnolService {
 
 
 }
+
+
+
+
+//            String dateString = "2023-06-01";
+//            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+//            LocalDate date = LocalDate.parse(dateString, formatter);
+//            System.out.println(date);
+//
+//            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+//            LocalTime time = LocalTime.parse(timeString, formatter);
+//            System.out.println(time);

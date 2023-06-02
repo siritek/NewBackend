@@ -6,33 +6,26 @@ import java.util.Date;
 
 public class Policyinformation {
 
-    private int policyNumber;
+    private String policyNumber;
     private String policyType;
-
     private String policyVerified;
-
-
-    private Date dateOfLoss;
-    private Time timeOfLoss;
-    private String underWriteCompany;
-    private Date effectiveDate;
-
-    private Date expirationDate;
-    private Date cancellationDate;
-
-    private Date originalEffectiveDate;
-
+    private String dateOfLoss;
+    private String lossTime;
+    private String underwriting;
+    private String effectiveDate;
+    private String expirationDate;
+    private String cancellationDate;
+    private String originalEffectiveDate;
     private String policyStatus;
-
-    private  String name;
-
+    private String name;
     private String address;
 
-    public int getPolicyNumber() {
+
+    public String getPolicyNumber() {
         return policyNumber;
     }
 
-    public void setPolicyNumber(int policyNumber) {
+    public void setPolicyNumber(String policyNumber) {
         this.policyNumber = policyNumber;
     }
 
@@ -52,59 +45,59 @@ public class Policyinformation {
         this.policyVerified = policyVerified;
     }
 
-    public Date getDateOfLoss() {
+    public String getDateOfLoss() {
         return dateOfLoss;
     }
 
-    public void setDateOfLoss(Date dateOfLoss) {
+    public void setDateOfLoss(String dateOfLoss) {
         this.dateOfLoss = dateOfLoss;
     }
 
-    public Time getTimeOfLoss() {
-        return timeOfLoss;
+    public String getLossTime() {
+        return lossTime;
     }
 
-    public void setTimeOfLoss(Time timeOfLoss) {
-        this.timeOfLoss = timeOfLoss;
+    public void setLossTime(String lossTime) {
+        this.lossTime = lossTime;
     }
 
-    public String getUnderWriteCompany() {
-        return underWriteCompany;
+    public String getUnderwriting() {
+        return underwriting;
     }
 
-    public void setUnderWriteCompany(String underWriteCompany) {
-        this.underWriteCompany = underWriteCompany;
+    public void setUnderwriting(String underwriting) {
+        this.underwriting = underwriting;
     }
 
-    public Date getEffectiveDate() {
+    public String getEffectiveDate() {
         return effectiveDate;
     }
 
-    public void setEffectiveDate(Date effectiveDate) {
+    public void setEffectiveDate(String effectiveDate) {
         this.effectiveDate = effectiveDate;
     }
 
-    public Date getExpirationDate() {
+    public String getExpirationDate() {
         return expirationDate;
     }
 
-    public void setExpirationDate(Date expirationDate) {
+    public void setExpirationDate(String expirationDate) {
         this.expirationDate = expirationDate;
     }
 
-    public Date getCancellationDate() {
+    public String getCancellationDate() {
         return cancellationDate;
     }
 
-    public void setCancellationDate(Date cancellationDate) {
+    public void setCancellationDate(String cancellationDate) {
         this.cancellationDate = cancellationDate;
     }
 
-    public Date getOriginalEffectiveDate() {
+    public String getOriginalEffectiveDate() {
         return originalEffectiveDate;
     }
 
-    public void setOriginalEffectiveDate(Date originalEffectiveDate) {
+    public void setOriginalEffectiveDate(String originalEffectiveDate) {
         this.originalEffectiveDate = originalEffectiveDate;
     }
 

@@ -4,32 +4,33 @@ import java.util.Date;
 
 public class Exposure {
 
-    private String lossparty;
-    private String primarycoverage;
+    private String lossParty;
+    private String primaryCoverage;
     private String adjuster;
     private String status;
-    private Date creationdate;
+    private String creationDate;
     private String claimant;
-    private String claimanttype;
-    private String primaryphone;
+    private String claimantType;
+    private String primaryPhone;
     private String address;
 
 
     //getters setters
-    public String getLossparty() {
-        return lossparty;
+
+    public String getLossParty() {
+        return lossParty;
     }
 
-    public void setLossparty(String lossparty) {
-        this.lossparty = lossparty;
+    public void setLossParty(String lossParty) {
+        this.lossParty = lossParty;
     }
 
-    public String getPrimarycoverage() {
-        return primarycoverage;
+    public String getPrimaryCoverage() {
+        return primaryCoverage;
     }
 
-    public void setPrimarycoverage(String primarycoverage) {
-        this.primarycoverage = primarycoverage;
+    public void setPrimaryCoverage(String primaryCoverage) {
+        this.primaryCoverage = primaryCoverage;
     }
 
     public String getAdjuster() {
@@ -48,12 +49,12 @@ public class Exposure {
         this.status = status;
     }
 
-    public Date getCreationdate() {
-        return creationdate;
+    public String getCreationDate() {
+        return creationDate;
     }
 
-    public void setCreationdate(Date creationdate) {
-        this.creationdate = creationdate;
+    public void setCreationDate(String creationDate) {
+        this.creationDate = creationDate;
     }
 
     public String getClaimant() {
@@ -64,20 +65,20 @@ public class Exposure {
         this.claimant = claimant;
     }
 
-    public String getClaimanttype() {
-        return claimanttype;
+    public String getClaimantType() {
+        return claimantType;
     }
 
-    public void setClaimanttype(String claimanttype) {
-        this.claimanttype = claimanttype;
+    public void setClaimantType(String claimantType) {
+        this.claimantType = claimantType;
     }
 
-    public String getPrimaryphone() {
-        return primaryphone;
+    public String getPrimaryPhone() {
+        return primaryPhone;
     }
 
-    public void setPrimaryphone(String primaryphone) {
-        this.primaryphone = primaryphone;
+    public void setPrimaryPhone(String primaryPhone) {
+        this.primaryPhone = primaryPhone;
     }
 
     public String getAddress() {
@@ -87,6 +88,4 @@ public class Exposure {
     public void setAddress(String address) {
         this.address = address;
     }
-
-
 }
