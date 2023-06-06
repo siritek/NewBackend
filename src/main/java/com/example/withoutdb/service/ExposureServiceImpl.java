@@ -13,18 +13,18 @@ public class ExposureServiceImpl implements ExposureService {
         try {
             DateTimeUtil dateTimeUtil = new DateTimeUtil();
             Connection con = DBConn.getMyConnection();
-            PreparedStatement ps = con.prepareStatement("INSERT INTO exposures(lossparty , primarycoverage, Adjuster, ExposuresStatus, CreationDate, Claimant, ClaimantType, Phone, Address) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    //       System.out.println(exposure.getLossParty() + " " + exposure.getPrimaryCoverage()+ " " + exposure.getAdjuster() +" " + exposure.getStatus() +  " " + exposure.getStatus() +  " " + exposure.getClaimant() +  " " + exposure.getClaimantType() +  " " + exposure.getPrimaryPhone() +  " " + exposure.getAddress() );
-            ps.setString(1, exposure.getLossParty());
-            ps.setString(2, exposure.getPrimaryCoverage());
-            ps.setString(3, exposure.getAdjuster());
-            ps.setString(4, exposure.getStatus());
-            ps.setDate(5, Date.valueOf(dateTimeUtil.toDate(exposure.getCreationDate())));
-            ps.setString(6, exposure.getClaimant());
-            ps.setString(7, exposure.getClaimantType());
-            ps.setString(8, exposure.getPrimaryPhone());
-            ps.setString(9, exposure.getAddress());
-
+           PreparedStatement ps = con.prepareStatement("INSERT INTO exposures(lossparty , primarycoverage, Adjuster, ExposuresStatus, CreationDate, Claimant, ClaimantType, Phone, Address) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+//    //       System.out.println(exposure.getLossParty() + " " + exposure.getPrimaryCoverage()+ " " + exposure.getAdjuster() +" " + exposure.getStatus() +  " " + exposure.getStatus() +  " " + exposure.getClaimant() +  " " + exposure.getClaimantType() +  " " + exposure.getPrimaryPhone() +  " " + exposure.getAddress() );
+//            ps.setString(1, exposure.getLossParty());
+//            ps.setString(2, exposure.getPrimaryCoverage());
+//            ps.setString(3, exposure.getAdjuster());
+//            ps.setString(4, exposure.getStatus());
+//            ps.setDate(5, Date.valueOf(dateTimeUtil.toDate(exposure.getCreationDate())));
+//            ps.setString(6, exposure.getClaimant());
+//            ps.setString(7, exposure.getClaimantType());
+//            ps.setString(8, exposure.getPrimaryPhone());
+//            ps.setString(9, exposure.getAddress());
+//
 
             ps.executeUpdate(); // Execute the insert statement
 
