@@ -11,7 +11,7 @@ public class DBConn {
         Connection conn = null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sample_db", "root", "root");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/nxtbase_db", "root", "root");
         }
         catch(Exception ex)
         {

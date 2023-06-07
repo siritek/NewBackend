@@ -3,42 +3,18 @@ package com.example.withoutdb.model;
 public class SearchClaim {
 
 
-    private String ClaimNumber;
+    private String claimNumber;
     private String policyNumber;
-    private String SearchFor;
+    private String searchFor;
 
-    private String FirstName;
-
-    private String LastName;
-
-    private String OrganizationName;
-
-    private String TaxID;
-
-    private String Insured;
-
-    private String Claimant;
-
-    private String LossDate;
-
-    private String Adjuster;
-
-    private String Status;
-
-    private String RemainingReserves;
-
-    private String FuturePayments;
-
-    private String Paid;
-
-
+    private String firstName;
 
     public String getClaimNumber() {
-        return ClaimNumber;
+        return claimNumber;
     }
 
     public void setClaimNumber(String claimNumber) {
-        ClaimNumber = claimNumber;
+        this.claimNumber = claimNumber;
     }
 
     public String getPolicyNumber() {
@@ -50,109 +26,130 @@ public class SearchClaim {
     }
 
     public String getSearchFor() {
-        return SearchFor;
+        return searchFor;
     }
 
     public void setSearchFor(String searchFor) {
-        SearchFor = searchFor;
+        this.searchFor = searchFor;
     }
 
     public String getFirstName() {
-        return FirstName;
+        return firstName;
     }
 
     public void setFirstName(String firstName) {
-        FirstName = firstName;
+        this.firstName = firstName;
     }
 
     public String getLastName() {
-        return LastName;
+        return lastName;
     }
 
     public void setLastName(String lastName) {
-        LastName = lastName;
+        this.lastName = lastName;
     }
 
     public String getOrganizationName() {
-        return OrganizationName;
+        return organizationName;
     }
 
     public void setOrganizationName(String organizationName) {
-        OrganizationName = organizationName;
+        this.organizationName = organizationName;
     }
 
     public String getTaxID() {
-        return TaxID;
+        return taxID;
     }
 
     public void setTaxID(String taxID) {
-        TaxID = taxID;
+        this.taxID = taxID;
     }
 
     public String getInsured() {
-        return Insured;
+        return insured;
     }
 
     public void setInsured(String insured) {
-        Insured = insured;
+        this.insured = insured;
     }
 
     public String getClaimant() {
-        return Claimant;
+        return claimant;
     }
 
     public void setClaimant(String claimant) {
-        Claimant = claimant;
+        this.claimant = claimant;
     }
 
     public String getLossDate() {
-        return LossDate;
+        return lossDate;
     }
 
     public void setLossDate(String lossDate) {
-        LossDate = lossDate;
+        this.lossDate = lossDate;
     }
 
     public String getAdjuster() {
-        return Adjuster;
+        return adjuster;
     }
 
     public void setAdjuster(String adjuster) {
-        Adjuster = adjuster;
+        this.adjuster = adjuster;
     }
 
     public String getStatus() {
-        return Status;
+        return status;
     }
 
     public void setStatus(String status) {
-        Status = status;
+        this.status = status;
     }
 
     public String getRemainingReserves() {
-        return RemainingReserves;
+        return remainingReserves;
     }
 
     public void setRemainingReserves(String remainingReserves) {
-        RemainingReserves = remainingReserves;
+        this.remainingReserves = remainingReserves;
     }
 
     public String getFuturePayments() {
-        return FuturePayments;
+        return futurePayments;
     }
 
     public void setFuturePayments(String futurePayments) {
-        FuturePayments = futurePayments;
+        this.futurePayments = futurePayments;
     }
 
     public String getPaid() {
-        return Paid;
+        return paid;
     }
 
     public void setPaid(String paid) {
-        Paid = paid;
+        this.paid = paid;
     }
 
+    private String lastName;
+
+    private String organizationName;
+
+    private String taxID;
+
+    private String insured;
+
+    private String claimant;
+
+    private String lossDate;
+
+    private String adjuster;
+
+    private String status;
+
+    private String remainingReserves;
+
+    private String futurePayments;
+
+    private String paid;
 
 
 
