@@ -17,13 +17,13 @@ public class CoverageTypeDAO {
         try {
             Connection con = DBConn.getMyConnection();
             System.out.println("Connection reached prepareStatement in coverageTypeDAO");
-            PreparedStatement ps = con.prepareStatement("SELECT name FROM coveragetype");
+            PreparedStatement ps = con.prepareStatement("SELECT PrimaryCoverage_Value FROM primarycoverage");
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                String coverageType = rs.getString("name");
+                String coverageType = rs.getString("PrimaryCoverage_Value");
                 coverageTypes.add(coverageType);
-                System.out.println("coverage type are :- \t "+coverageType);
+                System.out.println("coverage types are :- \t "+coverageType);
             }
             rs.close();
         }
