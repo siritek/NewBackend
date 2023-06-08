@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Date;
 
 @Service
 public class DiaryServiceImpl implements DiaryService {
@@ -22,12 +21,12 @@ public class DiaryServiceImpl implements DiaryService {
             ps.setString(1, diary.getSubject());
             ps.setString(2, diary.getDescription());
             ps.setString(3, diary.getRelatedTo());
-            //ps.setDate(4, diary.getDueDate());
-            ps.setString(4, diary.getPriority());
-            ps.setString(5, diary.getDetails());
-            ps.setString(6, diary.getAssignedTo());
-            ps.setString(7, diary.getCreatedBy());
-            //ps.setDate(9, diary.getDateCreated());
+            ps.setDate(4, (Date) diary.getDueDate());
+            ps.setString(5, diary.getPriority());
+            ps.setString(6, diary.getDetails());
+            ps.setString(7, diary.getAssignedTo());
+            ps.setString(8, diary.getCreatedBy());
+            ps.setDate(9, (Date) diary.getDateCreated());
 
 
 
