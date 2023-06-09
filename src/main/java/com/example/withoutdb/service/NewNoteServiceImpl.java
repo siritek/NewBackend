@@ -13,7 +13,7 @@ import com.example.withoutdb.model.NewNoteModel;
 import java.sql.*;
 
 import java.util.List;
-import java.util.Date;
+import java.sql.Date;
 
 
 
@@ -25,22 +25,22 @@ import java.util.Date;
 
 
         @Override
-        public void saveNewNote(NewNoteModel newnote2) {
+        public void saveNewNote(NewNoteModel newnote) {
             try {
                 Connection con = DBConn.getMyConnection();
-                PreparedStatement ps = con.prepareStatement("INSERT INTO newnote2 (topic , securitytype, subject, relatedto,text, confidential, dateofloss,timeofloss) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-                System.out.println(newnote2.getTopic() + " " + newnote2.getSecurityType() + " " + newnote2.getSubject() +" " + newnote2.getRelatedTo()  + " " + newnote2.getText() +  " " + newnote2.getConfidential() +" " + newnote2.getDateofloss() +" " + newnote2.getTimeofloss() );
-                ps.setString(1, newnote2.getTopic());
-                ps.setString(2, newnote2.getSecurityType());
+                PreparedStatement ps = con.prepareStatement("INSERT INTO newnote (topic , securitytype, subject, relatedto,text, confidential, dateofloss,timeofloss) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+                System.out.println(newnote.getTopic() + " " + newnote.getSecurityType() + " " + newnote.getSubject() +" " + newnote.getRelatedTo()  + " " + newnote.getText() +  " " + newnote.getConfidential() +" " + newnote.getDateofloss() +" " + newnote.getTimeofloss() );
+                ps.setString(1, newnote.getTopic());
+                ps.setString(2, newnote.getSecurityType());
 
-                ps.setString(3, newnote2.getSubject());
-                ps.setString(4, newnote2.getRelatedTo());
+                ps.setString(3, newnote.getSubject());
+                ps.setString(4, newnote.getRelatedTo());
 
-                ps.setString(5, newnote2.getText());
-                ps.setString(6, newnote2.getConfidential());
+                ps.setString(5, newnote.getText());
+                ps.setString(6, newnote.getConfidential());
 
-                ps.setDate(7, newnote2.getDateofloss());
-                ps.setString(8, newnote2.getTimeofloss());
+                ps.setDate(7, newnote.getDateofloss());
+                ps.setString(8, newnote.getTimeofloss());
 
 
 
