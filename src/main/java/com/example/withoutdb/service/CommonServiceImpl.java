@@ -9,18 +9,12 @@ public class CommonServiceImpl  implements  CommonService {
 
     public void saveCommon(Common common) {
         try {
-
-            DateTimeUtil dateTimeUtil = new DateTimeUtil();
-
             Fnol fnol = common.getFnolData();
             Policyinformation policyinformation = common.getPolicyInfoData();
             LossSummary lossSummary = common.getLossData();
             Exposure exposure = common.getExposureData();
+            DateTimeUtil dateTimeUtil = new DateTimeUtil();
 
-            new FnolServiceImpl().saveFnol(fnol);
-            new PolicyinformationServiceImpl().savePolicyinformation(policyinformation);
-            new LossSummaryServiceImpl().saveLossSummary(lossSummary);
-            new ExposureServiceImpl().saveExposure(exposure);
             Connection con = DBConn.getMyConnection();
             System.out.println("Connection reached Common Service");
 
@@ -69,8 +63,7 @@ public class CommonServiceImpl  implements  CommonService {
 
             ps.executeUpdate(); // Execute the insert statement
 
-            System.out.println("Data inserted successfully");
-            System.out.println("Inserted values: " + fnol.getPolicyNumber() + ", " +
+            System.out.println("Data inserted successfully,Inserted values: " + fnol.getPolicyNumber() + ", " +
                     dateTimeUtil.toDate(fnol.getDateOfLoss()) + ", " +
                     fnol.getLossLocation() + ", " +
                     dateTimeUtil.toTime(fnol.getLossTime()) + ", " +
@@ -114,12 +107,8 @@ public class CommonServiceImpl  implements  CommonService {
         }
     }
 
-
     @Override
     public List<Common> getAllcommons() {
         return null;
     }
-
 }
-
-
