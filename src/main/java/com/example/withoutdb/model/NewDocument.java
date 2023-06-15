@@ -1,6 +1,7 @@
 package com.example.withoutdb.model;
 
-import java.util.Date;
+import java.sql.Date;
+import java.sql.Time;
 
 public class NewDocument {
     //DocumentName,DocumentType,RelatedTo,Status,UploadedBy,UploadedDate,UploadedTime
@@ -10,8 +11,26 @@ public class NewDocument {
     private String relatedTo;
     private String status;
     private String uploadedBy;
-    private Date uploadedDate;
-    private Date uploadedTime;
+    private java.sql.Date uploadedDate;
+    private String uploadedTime;
+
+    public Date getUploadedDate() {
+        return uploadedDate;
+    }
+
+    public String getUploadedTime() {
+        return uploadedTime;
+    }
+
+    public void setUploadedTime(String uploadedTime) {
+        this.uploadedTime = uploadedTime;
+    }
+
+    public void setUploadedDate(Date uploadedDate) {
+        this.uploadedDate = uploadedDate;
+    }
+
+
 
     public String getDocumentName() {
         return documentName;
@@ -53,19 +72,5 @@ public class NewDocument {
         this.uploadedBy = uploadedBy;
     }
 
-    public Date getUploadedDate() {
-        return uploadedDate;
-    }
 
-    public void setUploadedDate(Date uploadedDate) {
-        this.uploadedDate = uploadedDate;
-    }
-
-    public Date getUploadedTime() {
-        return uploadedTime;
-    }
-
-    public void setUploadedTime(Date uploadedTime) {
-        this.uploadedTime = uploadedTime;
-    }
 }
