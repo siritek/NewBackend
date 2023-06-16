@@ -28,8 +28,8 @@ import java.sql.Date;
         public void saveNewNote(NewNoteModel newnote) {
             try {
                 Connection con = DBConn.getMyConnection();
-                PreparedStatement ps = con.prepareStatement("INSERT INTO newnote (topic , securitytype, subject, relatedto,text, confidential, dateofloss,timeofloss) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-                System.out.println(newnote.getTopic() + " " + newnote.getSecurityType() + " " + newnote.getSubject() +" " + newnote.getRelatedTo()  + " " + newnote.getText() +  " " + newnote.getConfidential() +" " + newnote.getDateofloss() +" " + newnote.getTimeofloss() );
+                PreparedStatement ps = con.prepareStatement("INSERT INTO newnote (topic , securitytype, subject, relatedto,text, confidential) VALUES (?, ?, ?, ?, ?, ?)");
+                System.out.println(newnote.getTopic() + " " + newnote.getSecurityType() + " " + newnote.getSubject() +" " + newnote.getRelatedTo()  + " " + newnote.getText() +  " " + newnote.getConfidential() );
                 ps.setString(1, newnote.getTopic());
                 ps.setString(2, newnote.getSecurityType());
 
@@ -39,8 +39,7 @@ import java.sql.Date;
                 ps.setString(5, newnote.getText());
                 ps.setString(6, newnote.getConfidential());
 
-                ps.setDate(7, newnote.getDateofloss());
-                ps.setString(8, newnote.getTimeofloss());
+
 
 
 
@@ -74,8 +73,7 @@ import java.sql.Date;
                     x.setRelatedTo(rs.getString(4));
                     x.setText(rs.getString(5));
                     x.setConfidential(rs.getString(6));
-                    x.setDateofloss(rs.getDate(7));
-                    x.setTimeofloss(rs.getString(8));
+
 
                     allnewnotes.add(x);
                 }
