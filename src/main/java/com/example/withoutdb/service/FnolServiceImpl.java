@@ -15,8 +15,6 @@ import java.sql.Date;
 public class FnolServiceImpl implements FnolService {
 
 
-
-
     @Override
 
     public void saveFnol(Fnol fnol) {

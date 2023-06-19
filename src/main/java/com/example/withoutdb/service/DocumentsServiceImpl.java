@@ -11,18 +11,20 @@ import java.util.Date;
 @Service
 public class DocumentsServiceImpl implements DocumentsService {
 
-
-
     @Override
     public void saveDocuments(Documents documents) {
         try {
             Connection con = DBConn.getMyConnection();
-            PreparedStatement ps = con.prepareStatement("INSERT INTO documents (RelatedTo, Status, Name) VALUES (?, ?, ?)");
-            System.out.println(documents.getRelatedTo() + " " + documents.getStatus() + " " + documents.getName()  );
-            ps.setString(1, documents.getRelatedTo());
-            ps.setString(2, documents.getStatus());
-            ps.setString(3, documents.getName());
+            PreparedStatement ps = con.prepareStatement("INSERT INTO documents (DocName,RelatedTo, Status) VALUES (?, ?, ?)");
+            System.out.println(documents.getRelatedTo() + " " + documents.getStatus() + " " + documents.getDocName() );
 
+           ps.setString(1, documents.getDocName());
+            ps.setString(2, documents.getRelatedTo());
+            ps.setString(3, documents.getStatus());
+           /* ps.setString(4, documents.getDocType());
+            ps.setString(5, documents.getUploadedBy());
+            ps.setString(6, documents.getUDate());
+            ps.setString(7, documents.getUTime());*/
 
 
             ps.executeUpdate(); // Execute the insert statement
@@ -35,7 +37,6 @@ public class DocumentsServiceImpl implements DocumentsService {
 
         }
     }
-
 
     @Override
     public List<Documents> getAlldocuments() {
@@ -51,7 +52,12 @@ public class DocumentsServiceImpl implements DocumentsService {
                 x = new Documents();
                 x.setRelatedTo(rs.getString(1));
                 x.setStatus(rs.getString(2));
-                x.setName(rs.getString(3));
+                x.setDocName(rs.getString(3));
+               /* x.setDocType(rs.getString(4));
+                x.setUploadedBy(rs.getString(5));
+                x.setUDate(rs.getString(6));
+                x.setUTime(rs.getString(7));*/
+
                 alldocuments.add(x);
             }
             con.close();

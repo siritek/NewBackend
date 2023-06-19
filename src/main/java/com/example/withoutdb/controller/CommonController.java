@@ -17,6 +17,8 @@ public class CommonController {
     @PostMapping("/add")
     public String add(@RequestBody Common common){
         try {
+            String json = new ObjectMapper().writeValueAsString(common);
+            System.out.println("received this json from react for submit claim :- "+json);
             CommonService.saveCommon(common);
         } catch (Exception e) {
             System.out.println(e);

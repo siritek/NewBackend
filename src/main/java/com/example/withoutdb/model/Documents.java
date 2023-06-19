@@ -1,37 +1,69 @@
 package com.example.withoutdb.model;
 
-import java.util.Date;
-
 public class Documents {
     //RelatedTo,Status,Name
+    private String DocType;
+    private String DocName;
+
+    public String getDocName() {
+        return DocName;
+    }
+
+    public void setDocName(String docName) {
+        DocName = docName;
+    }
+
+    private String RelatedTo;
+    private String Status;
+    private String UploadedBy;
+    private String UDate;
+    private String UTime;
 
 
-
-    private String relatedTo;
-    private String status;
-    private String name;
+    public String getDocType() {
+        return DocType;
+    }
+    public void setDocType(String docType) {
+        DocType = docType;
+    }
 
     public String getRelatedTo() {
-        return relatedTo;
+        return RelatedTo;
     }
 
     public void setRelatedTo(String relatedTo) {
-        this.relatedTo = relatedTo;
+        RelatedTo = relatedTo;
     }
 
     public String getStatus() {
-        return status;
+        return Status;
     }
 
     public void setStatus(String status) {
-        this.status = status;
+        Status = status;
     }
 
-    public String getName() {
-        return name;
+    public String getUploadedBy() {
+        return UploadedBy;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUploadedBy(String uploadedBy) {
+        UploadedBy = uploadedBy;
+    }
+
+    public String getUDate() {
+        return UDate;
+    }
+
+    public void setUDate(String UDate) {
+        this.UDate = UDate;
+    }
+
+    public String getUTime() {
+        return UTime;
+    }
+
+    public void setUTime(String UTime) {
+        this.UTime = UTime;
     }
 }

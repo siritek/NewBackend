@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/policytypes")
+@RequestMapping("/oo")
 
 public class PolicyTypeDAOController {
     private final PolicyTypeDAO policyTypeDAO;
