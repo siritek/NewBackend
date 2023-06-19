@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Date;
 
 @Service
 public class NewDocumentServiceImpl implements NewDocumentService {
@@ -24,8 +23,8 @@ public class NewDocumentServiceImpl implements NewDocumentService {
             ps.setString(3, newdocument.getRelatedTo());
             ps.setString(4, newdocument.getStatus());
             ps.setString(5, newdocument.getUploadedBy());
-            //ps.setDate(6, newdocument.getUploadedDate());
-            //ps.setDate(7, newdocument.getUploadedTime());
+            ps.setDate(6,  newdocument.getUploadedDate());
+            ps.setString(7,  newdocument.getUploadedTime());
 
 
             ps.executeUpdate(); // Execute the insert statement
@@ -58,7 +57,7 @@ public class NewDocumentServiceImpl implements NewDocumentService {
                 x.setStatus(rs.getString(4));
                 x.setUploadedBy(rs.getString(5));
                 x.setUploadedDate(rs.getDate(6));
-                x.setUploadedTime(rs.getDate(7));
+                x.setUploadedTime(rs.getString(7));
                 allnewdocuments.add(x);
             }
             con.close();
