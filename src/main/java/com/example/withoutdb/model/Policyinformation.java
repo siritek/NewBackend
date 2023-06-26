@@ -19,7 +19,15 @@ public class Policyinformation {
     private String policyStatus;
     private String name;
     private String address;
+    private String primaryPhone;
 
+    public String getPrimaryPhone() {
+        return primaryPhone;
+    }
+
+    public void setPrimaryPhone(String primaryPhone) {
+        this.primaryPhone = primaryPhone;
+    }
 
     public String getPolicyNumber() {
         return policyNumber;

@@ -11,7 +11,7 @@ public class Exposure {
     private String creationDate;
     private String claimant;
     private String claimantType;
-    private String primaryPhone;
+
     private String address;
 
 
@@ -73,13 +73,7 @@ public class Exposure {
         this.claimantType = claimantType;
     }
 
-    public String getPrimaryPhone() {
-        return primaryPhone;
-    }
 
-    public void setPrimaryPhone(String primaryPhone) {
-        this.primaryPhone = primaryPhone;
-    }
 
     public String getAddress() {
         return address;

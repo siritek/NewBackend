@@ -10,7 +10,8 @@ import java.sql.SQLException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@CrossOrigin(origins = "http://localhost:3000")
+@RequestMapping("/claimcenter")
 public class ClaimController {
 
     private final DBConn dbConn;
