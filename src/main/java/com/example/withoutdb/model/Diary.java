@@ -6,16 +6,24 @@ public class Diary {
     //Subject,Description,RelatedTo,DueDate,Priority,Details,AssignedTo,CreatedBy,DateCreated
 
 
-
+    private String claimNumber;
     private String subject;
     private String description;
     private String relatedTo;
-    private Date dueDate;
-    private String priority;
+    private String dueDate;
+
     private String details;
     private String assignedTo;
     private String createdBy;
-    private Date dateCreated;
+    private String dateCreated;
+
+    public String getClaimNumber() {
+        return claimNumber;
+    }
+
+    public void setClaimNumber(String claimNumber) {
+        this.claimNumber = claimNumber;
+    }
 
     public String getSubject() {
         return subject;
@@ -41,21 +49,14 @@ public class Diary {
         this.relatedTo = relatedTo;
     }
 
-    public Date getDueDate() {
+    public String getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(Date dueDate) {
+    public void setDueDate(String dueDate) {
         this.dueDate = dueDate;
     }
 
-    public String getPriority() {
-        return priority;
-    }
-
-    public void setPriority(String priority) {
-        this.priority = priority;
-    }
 
     public String getDetails() {
         return details;
@@ -81,11 +82,12 @@ public class Diary {
         this.createdBy = createdBy;
     }
 
-    public Date getDateCreated() {
+    public String getDateCreated() {
         return dateCreated;
     }
 
-    public void setDateCreated(Date dateCreated) {
+    public void setDateCreated(String dateCreated) {
         this.dateCreated = dateCreated;
     }
 }
+

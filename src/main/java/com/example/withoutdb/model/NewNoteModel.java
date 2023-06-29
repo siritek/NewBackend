@@ -10,95 +10,68 @@ import java.sql.Date;
 public class NewNoteModel {
 
 
-        private long id;
-        private String Topic;
-        private String SecurityType ;
+ private String claimNumber;
+        private String topic;
+        private String securityType ;
 
-        private String Confidential;
+        private String confidential;
+    private String subject;
+        private String relatedTo;
+        private String text;
 
-    public String getConfidential() {
-        return Confidential;
+    public String getClaimNumber() {
+        return claimNumber;
     }
 
-    public void setConfidential(String confidential) {
-        Confidential = confidential;
-    }
-
-    private String Subject;
-        private String RelatedTo;
-        private String Text;
-
-        private Date  dateofloss;
-
-    public Date getDateofloss() {
-        return dateofloss;
-    }
-
-    public void setDateofloss(Date dateofloss) {
-        this.dateofloss = dateofloss;
-    }
-
-    private String timeofloss;
-
-    public NewNoteModel() {
-    }
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
+    public void setClaimNumber(String claimNumber) {
+        this.claimNumber = claimNumber;
     }
 
     public String getTopic() {
-        return Topic;
+        return topic;
     }
 
     public void setTopic(String topic) {
-        Topic = topic;
+        this.topic = topic;
     }
 
     public String getSecurityType() {
-        return SecurityType;
+        return securityType;
     }
 
-    public void setSecurityType(String securitytype) {
-        SecurityType = securitytype;
+    public void setSecurityType(String securityType) {
+        this.securityType = securityType;
+    }
+
+    public String getConfidential() {
+        return confidential;
+    }
+
+    public void setConfidential(String confidential) {
+        this.confidential = confidential;
     }
 
     public String getSubject() {
-        return Subject;
+        return subject;
     }
 
     public void setSubject(String subject) {
-        Subject = subject;
+        this.subject = subject;
     }
 
     public String getRelatedTo() {
-        return RelatedTo;
+        return relatedTo;
     }
 
     public void setRelatedTo(String relatedTo) {
-        RelatedTo = relatedTo;
+        this.relatedTo = relatedTo;
     }
 
     public String getText() {
-        return Text;
+        return text;
     }
 
     public void setText(String text) {
-        Text = text;
+        this.text = text;
     }
-
-
-
-    public String getTimeofloss() {
-        return timeofloss;
-    }
-
-    public void setTimeofloss(String timeofloss) {
-        this.timeofloss = timeofloss;
-    }
-
-
 }

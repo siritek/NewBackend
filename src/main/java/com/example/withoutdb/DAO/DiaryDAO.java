@@ -38,27 +38,27 @@ public class DiaryDAO {
             rs.close();
             //Assigned To, Created By,
 
-            PreparedStatement ps1 = con.prepareStatement("SELECT value from assignedto");
+            PreparedStatement ps1 = con.prepareStatement("SELECT Name from diary_assigned");
             ResultSet rs1 = ps1.executeQuery();
 
             while (rs1.next()) {
-                String assignedTo = rs1.getString("value");
+                String assignedTo = rs1.getString("Name");
                 assignees.add(assignedTo);
             }
             rs1.close();
 
-            PreparedStatement ps2 = con.prepareStatement("SELECT value from createdby");
+            PreparedStatement ps2 = con.prepareStatement("SELECT Name from diary_createdby");
             ResultSet rs2 = ps2.executeQuery();
 
             while (rs2.next()) {
-                String createdby = rs2.getString("value");
+                String createdby = rs2.getString("Name");
                 createdBy.add(createdby);
             }
 
 
             typesMap.put("relatedTos", relatedTos);
             typesMap.put("assignees", assignees);
-            typesMap.put("createdBy", createdBy);
+            typesMap.put("createdBys", createdBy);
             System.out.println("Diary : - "+typesMap);
         }
         catch (Exception e) {

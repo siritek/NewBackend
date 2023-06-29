@@ -28,19 +28,16 @@ import java.sql.Date;
         public void saveNewNote(NewNoteModel newnote) {
             try {
                 Connection con = DBConn.getMyConnection();
-                PreparedStatement ps = con.prepareStatement("INSERT INTO newnote (topic , securitytype, subject, relatedto,text, confidential, dateofloss,timeofloss) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-                System.out.println(newnote.getTopic() + " " + newnote.getSecurityType() + " " + newnote.getSubject() +" " + newnote.getRelatedTo()  + " " + newnote.getText() +  " " + newnote.getConfidential() +" " + newnote.getDateofloss() +" " + newnote.getTimeofloss() );
-                ps.setString(1, newnote.getTopic());
-                ps.setString(2, newnote.getSecurityType());
+                PreparedStatement ps = con.prepareStatement("INSERT INTO newnote ( claimnumber,topic , securitytype, subject, relatedto,text, confidential) VALUES (?, ?, ?, ?, ?, ?, ?)");
+                System.out.println(newnote.getTopic() + " " + newnote.getSecurityType() + " " + newnote.getSubject() +" " + newnote.getRelatedTo()  + " " + newnote.getText() +  " " + newnote.getConfidential() );
+               ps.setString(1,newnote.getClaimNumber());
+                ps.setString(2, newnote.getTopic());
+                ps.setString(3, newnote.getSecurityType());
+                ps.setString(4, newnote.getSubject());
+                ps.setString(5, newnote.getRelatedTo());
+                ps.setString(6, newnote.getText());
+                ps.setString(7, newnote.getConfidential());
 
-                ps.setString(3, newnote.getSubject());
-                ps.setString(4, newnote.getRelatedTo());
-
-                ps.setString(5, newnote.getText());
-                ps.setString(6, newnote.getConfidential());
-
-                ps.setDate(7, newnote.getDateofloss());
-                ps.setString(8, newnote.getTimeofloss());
 
 
 
@@ -68,14 +65,14 @@ import java.sql.Date;
                 while(rs.next())
                 {
                     x = new NewNoteModel();
-                    x.setTopic(rs.getString(1));
-                    x.setSecurityType(rs.getString(2));
-                    x.setSubject(rs.getString(3));
-                    x.setRelatedTo(rs.getString(4));
-                    x.setText(rs.getString(5));
-                    x.setConfidential(rs.getString(6));
-                    x.setDateofloss(rs.getDate(7));
-                    x.setTimeofloss(rs.getString(8));
+                    x.setClaimNumber(rs.getString(1));
+                    x.setTopic(rs.getString(2));
+                    x.setSecurityType(rs.getString(3));
+                    x.setSubject(rs.getString(4));
+                    x.setRelatedTo(rs.getString(5));
+                    x.setText(rs.getString(6));
+                    x.setConfidential(rs.getString(7));
+
 
                     allnewnotes.add(x);
                 }
