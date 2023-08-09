@@ -1,23 +1,19 @@
 package com.example.withoutdb.model;
 
-import java.sql.Time;
-import java.util.Date;
-
 public class LossSummary {
 
 
     private String adjuster;
     private String lossDescription;
     private String lossCause;
-    private String otherDescription;
+
     private String typeOfLoss;
     private String weatherInvolved;   //weatherInvloved
     private String weatherDescription;
 
     private String location;
-    private String address1;
-    private String address2;
-    private String address3;
+
+    private String lossAddress;
 
     private String country;
 
@@ -71,13 +67,6 @@ public class LossSummary {
         this.lossCause = lossCause;
     }
 
-    public String getOtherDescription() {
-        return otherDescription;
-    }
-
-    public void setOtherDescription(String otherDescription) {
-        this.otherDescription = otherDescription;
-    }
 
     public String getTypeOfLoss() {
         return typeOfLoss;
@@ -111,28 +100,12 @@ public class LossSummary {
         this.location = location;
     }
 
-    public String getAddress1() {
-        return address1;
+    public String getLossAddress() {
+        return lossAddress;
     }
 
-    public void setAddress1(String address1) {
-        this.address1 = address1;
-    }
-
-    public String getAddress2() {
-        return address2;
-    }
-
-    public void setAddress2(String address2) {
-        this.address2 = address2;
-    }
-
-    public String getAddress3() {
-        return address3;
-    }
-
-    public void setAddress3(String address3) {
-        this.address3 = address3;
+    public void setLossAddress(String lossAddress) {
+        this.lossAddress = lossAddress;
     }
 
     public String getCountry() {

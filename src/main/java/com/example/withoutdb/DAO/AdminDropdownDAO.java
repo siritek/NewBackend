@@ -2,34 +2,33 @@ package com.example.withoutdb.DAO;
 
 import com.example.withoutdb.service.DBConn;
 import org.springframework.stereotype.Service;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @Service
-public class ExposuresDAO {
-
-    public DBConn dbConn = new DBConn();
-    public ExposuresDAO() {
+public class AdminDropdownDAO {
+    private DBConn dbConn = new DBConn();
+    public AdminDropdownDAO() {
     }
-
-    public Map<String ,List<String>> getExposures() {
-        Map<String, List<String>> typemaps = new HashMap<>();
-        List<String> claimanttypes = new ArrayList<>();
-        List<String> lossparties = new ArrayList<>();
+    public static Map<String, List<String>> getAdminDropdownValues() {
+        Map<String, List<String>> typesMap = new HashMap<>();
         List<String> Adjusters = new ArrayList<>();
-        List<String> primarycoverages = new ArrayList<>();
-        List<String> ExposureStatus = new ArrayList<>();
-        List<String>states = new ArrayList<>();
-        List<String> relationshiptoinsured = new ArrayList<>();
+        List<String> claimanttypes = new ArrayList<>();
         List<String> topics = new ArrayList<>();
         List<String> securityTypes = new ArrayList<>();
         List<String> relatedToValues = new ArrayList<>();
+        List<String> states = new ArrayList<>();
+        List<String> ExposureStatus = new ArrayList<>();
+        List<String> AssignedTo = new ArrayList<>();
+        List<String> CreatedBy = new ArrayList<>();
+        List<String> relationshiptoinsured = new ArrayList<>();
+
 
         try{
 // get claimant types from claimanttype table
@@ -52,7 +51,7 @@ public class ExposuresDAO {
                 relationshiptoinsured.add(relationValue);
             }
             rs8.close();
-            typemaps.put("relationshiptoinsured", relationshiptoinsured);
+            typesMap.put("relationshiptoinsured", relationshiptoinsured);
 
             //get topics from topic table
             PreparedStatement ps9 = connection.prepareStatement("SELECT Name FROM topic");
@@ -62,7 +61,7 @@ public class ExposuresDAO {
                 topics.add(topicName);
             }
             rs9.close();
-            typemaps.put("topic", topics);
+            typesMap.put("topic", topics);
 
             //get security types from securitytype table
             PreparedStatement ps10 = connection.prepareStatement("SELECT Name FROM securitytype");
@@ -72,7 +71,7 @@ public class ExposuresDAO {
                 securityTypes.add(securityTypeName);
             }
             rs10.close();
-            typemaps.put("securityType", securityTypes);
+            typesMap.put("securityType", securityTypes);
 
             PreparedStatement ps5 = connection.prepareStatement("SELECT State FROM state");
             ResultSet rs5 = ps5.executeQuery();
@@ -81,8 +80,8 @@ public class ExposuresDAO {
                 states.add(stateValue);
             }
             rs5.close();
-           // List<String> states;
-            typemaps.put("state", states);
+            // List<String> states;
+            typesMap.put("state", states);
 
 
             //get relatedto values from relatedto table
@@ -93,29 +92,9 @@ public class ExposuresDAO {
                 relatedToValues.add(relatedToName);
             }
             rs11.close();
-            typemaps.put("relatedTo", relatedToValues);
+            typesMap.put("relatedTo", relatedToValues);
 
 
-            //get loss parties from lossparty table
-            PreparedStatement ps1 = connection.prepareStatement("SELECT LossParty_Value FROM lossparty");
-            ResultSet rs1 = ps1.executeQuery();
-
-            while (rs1.next()) {
-                String lossParty = rs1.getString("LossParty_Value");
-                lossparties.add(lossParty);
-            }
-            rs1.close();
-
-            //get primary coverages from primarycoverage table
-            PreparedStatement ps2 = connection.prepareStatement("SELECT PrimaryCoverage_Value FROM primarycoverage");
-            ResultSet rs2 = ps2.executeQuery();
-
-            while (rs2.next()) {
-                String primaryCoverage = rs2.getString("PrimaryCoverage_Value");
-                primarycoverages.add(primaryCoverage);
-
-            }
-            rs2.close();
             PreparedStatement ps3 = connection.prepareStatement("SELECT Adjuster_Value FROM adjuster");
             ResultSet rs3 = ps3.executeQuery();
             while (rs3.next()) {
@@ -131,7 +110,7 @@ public class ExposuresDAO {
                 ExposureStatus.add(exposureStatus);
             }
             rs4.close();
-            typemaps.put("exposureStatus", ExposureStatus);
+            typesMap.put("exposureStatus", ExposureStatus);
 
             //get assignedto values from assignedto table
             List<String> assignedToValues = new ArrayList<>();
@@ -142,23 +121,68 @@ public class ExposuresDAO {
                 assignedToValues.add(assignedToValue);
             }
             rs13.close();
-            typemaps.put("assignedto", assignedToValues);
 
 
-            typemaps.put("claimantType",claimanttypes);
-            typemaps.put("lossParty",lossparties);
-            typemaps.put("adjuster",Adjusters);
-            typemaps.put("exposureStatus",ExposureStatus);
-            typemaps.put("primaryCoverage",primarycoverages);
-            System.out.println("exposures:- " +typemaps);
+//        try {
+//            Connection con = DBConn.getMyConnection();
+//            System.out.println("Connection reached prepareStatement");
+//            PreparedStatement ps = con.prepareStatement("SELECT PolicyStatus_Value FROM policystatus");
+//            ResultSet rs = ps.executeQuery();
+//
+//            while (rs.next()) {
+//                String adjusters = rs.getString("PolicyStatus_Value");
+//                adjuster.add(adjusters);
+//                System.out.println(adjusters);
+//            }
+//            rs.close();
+//
+//            PreparedStatement ps1 = con.prepareStatement("SELECT Name FROM topic");
+//            ResultSet rs1 = ps1.executeQuery();
+//
+//            while (rs1.next()) {
+//                String topics = rs1.getString("Name");
+//                Topic.add(topics);
+//                System.out.println(topics);
+//            }
+//            rs1.close();
+//
+//            PreparedStatement ps2 = con.prepareStatement("SELECT Name FROM securitytype");
+//            ResultSet rs2 = ps2.executeQuery();
+//
+//            while (rs2.next()) {
+//                String securityTypes = rs2.getString("Name");
+//                SecurityType.add(securityTypes);
+//                System.out.println(securityTypes);
+//            }
+//            rs2.close();
 
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+            //typesMap.put("policyStatus", policyStatuss);
+            typesMap.put("state", states);
+            typesMap.put("adjuster", Adjusters);
+            typesMap.put("topic", topics);
+            typesMap.put("securityType", securityTypes);
+            typesMap.put("relatedTo", relatedToValues);
+            typesMap.put("status", ExposureStatus);
+            typesMap.put("assignedTo", assignedToValues);
+            typesMap.put("createdBy", CreatedBy);
+            typesMap.put("relationshiptoinsured", relationshiptoinsured);
+
+
+
+//            typesMap.put("adjuster", adjuster);
+//            typesMap.put("Topic", Topic);
+//            typesMap.put("SecurityType", SecurityType);
+//            typesMap.put("RelatedTo", RelatedTo);
+//            typesMap.put("Status", Status);
+//            typesMap.put("AssignedTo", AssignedTo);
+//            typesMap.put("CreatedBy", CreatedBy);
+//            typesMap.put("Relationshiptoinsured", Relationshiptoinsured);
+            System.out.println("Admin screen dropdowns "+typesMap);
+
+        }
+        catch (Exception e) {
+            e.printStackTrace();
         }
 
-
-
-        return typemaps;
-    }
-
+        return typesMap; }
 }

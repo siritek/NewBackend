@@ -31,9 +31,29 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.10.1</version>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+        <dependency>
+            <groupId>cn.nikeo.jsonBuilder</groupId>
+            <artifactId>jsonBuilder</artifactId>
+            <version>0.2.0</version>
+        </dependency>
+		<dependency>
+			<groupId>com.github.holgerbrandl</groupId>
+			<artifactId>jsonbuilder</artifactId>
+			<version>0.10</version>
+		</dependency>
+		<dependency>
+			<groupId>com.51degrees</groupId>
+			<artifactId>pipeline.jsonbuilder</artifactId>
+			<version>4.4.19</version>
 		</dependency>
 	</dependencies>
 

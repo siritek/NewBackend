@@ -46,7 +46,7 @@ public class LossSummaryServiceImpl implements LossSummaryService {
             ps.setString(1, losssummary.getAdjuster());
             ps.setString(2, losssummary.getLossDescription());
             ps.setString(5, losssummary.getLossCause());
-            ps.setString(3, losssummary.getOtherDescription());
+         //   ps.setString(3, losssummary.getOtherDescription());
             ps.setString(4, losssummary.getTypeOfLoss());
             ps.setString(6, losssummary.getWeatherInvolved());
             ps.setString(7, losssummary.getWeatherDescription()); // need check for the data tinyint
@@ -55,14 +55,12 @@ public class LossSummaryServiceImpl implements LossSummaryService {
             ps.setString(10,losssummary.getReportedBy());
             ps.setString(11,losssummary.getRelationshipToInsured());
             ps.setString(12, losssummary.getLocation());
-            ps.setString(13, losssummary.getAddress1());
-            ps.setString(14,losssummary.getAddress2());
-            ps.setString(15, losssummary.getAddress3());
-            ps.setString(16, losssummary.getCountry());
-            ps.setString(17, losssummary.getCity());
-            ps.setString(19, losssummary.getState());
-            ps.setString(18, losssummary.getZipCode());
-            ps.setString(20, losssummary.getJurisdiction());
+            ps.setString(13, losssummary.getLossAddress());
+            ps.setString(14, losssummary.getCountry());
+            ps.setString(15, losssummary.getCity());
+            ps.setString(16, losssummary.getState());
+            ps.setString(17, losssummary.getZipCode());
+            ps.setString(18, losssummary.getJurisdiction());
 
             ps.executeUpdate(); // Execute the insert statement
 
@@ -91,21 +89,19 @@ public class LossSummaryServiceImpl implements LossSummaryService {
                 x.setAdjuster(rs.getString(1));
                 x.setLossDescription(rs.getString(2));
                 x.setLossCause(rs.getString(3));
-                x.setOtherDescription(rs.getString(4));
+              //  x.setOtherDescription(rs.getString(4));
                 x.setTypeOfLoss(rs.getString(5));
                 x.setWeatherInvolved(rs.getString(6));
                 x.setWeatherDescription(rs.getString(7));
                 //x.setDateOfLoss(rs.getDate(8));
                 //   x.setTimeOfLoss(rs.getTime(9));
                 x.setLocation(rs.getString(10));
-                x.setAddress1(rs.getString(11));
-                x.setAddress2(rs.getString(12));
-                x.setAddress3(rs.getString(13));
-                x.setCountry(rs.getString(14));
-                x.setCity(rs.getString(15));
-                x.setState(rs.getString(16));
+              x.setLossAddress(rs.getString(11));
+                x.setCountry(rs.getString(12));
+                x.setCity(rs.getString(13));
+                x.setState(rs.getString(14));
                 //x.setZipCode(rs.getInt(17));
-                x.setJurisdiction(rs.getString(18));
+                x.setJurisdiction(rs.getString(16));
 
                 alllosssummarys.add(x);
             }
@@ -120,8 +116,6 @@ public class LossSummaryServiceImpl implements LossSummaryService {
 
         return alllosssummarys;
     }
-
-
 
 
 }

@@ -8,14 +8,14 @@ public class Policyinformation {
 
     private String policyNumber;
     private String policyType;
-    private String policyVerified;
+
     private String dateOfLoss;
     private String lossTime;
     private String underwriting;
     private String effectiveDate;
     private String expirationDate;
     private String cancellationDate;
-    private String originalEffectiveDate;
+
     private String policyStatus;
     private String name;
     private String address;
@@ -45,13 +45,7 @@ public class Policyinformation {
         this.policyType = policyType;
     }
 
-    public String getPolicyVerified() {
-        return policyVerified;
-    }
 
-    public void setPolicyVerified(String policyVerified) {
-        this.policyVerified = policyVerified;
-    }
 
     public String getDateOfLoss() {
         return dateOfLoss;
@@ -101,13 +95,6 @@ public class Policyinformation {
         this.cancellationDate = cancellationDate;
     }
 
-    public String getOriginalEffectiveDate() {
-        return originalEffectiveDate;
-    }
-
-    public void setOriginalEffectiveDate(String originalEffectiveDate) {
-        this.originalEffectiveDate = originalEffectiveDate;
-    }
 
     public String getPolicyStatus() {
         return policyStatus;
