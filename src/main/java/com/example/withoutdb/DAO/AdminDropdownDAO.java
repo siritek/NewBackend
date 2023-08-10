@@ -33,7 +33,7 @@ public class AdminDropdownDAO {
         try{
 // get claimant types from claimanttype table
             Connection connection = DBConn.getMyConnection();
-            System.out.println("Connection reached prepareStatement in exposuresDAO");
+            System.out.println("Connection reached prepareStatement in AdminDropdownDAO");
             PreparedStatement ps = connection.prepareStatement("SELECT ClaimantType_Value FROM claimanttype");
             ResultSet rs = ps.executeQuery();
 
@@ -81,7 +81,7 @@ public class AdminDropdownDAO {
             }
             rs5.close();
             // List<String> states;
-            typesMap.put("state", states);
+           // typesMap.put("state", states);
 
 
             //get relatedto values from relatedto table
