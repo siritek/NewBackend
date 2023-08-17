@@ -15,14 +15,8 @@ import java.sql.*;
 import java.util.List;
 import java.sql.Date;
 
-
-
-
-
     @Service
     public class NewNoteServiceImpl implements NewNoteService {
-
-
 
         @Override
         public void saveNewNote(NewNoteModel newnote) {

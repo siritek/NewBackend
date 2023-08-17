@@ -1,40 +1,51 @@
 package com.example.withoutdb.model;
 
 public class Injuries {
-    private String injuryID;
-    private String injuryName;
-    private String injurySeverity;
-    private String injuryDescription;
+    private String PolicyNumber;
+    private String ClaimNumber;
+    private String Name;
+    private String Severity;
 
-    public String getInjuryID() {
-        return injuryID;
+    public String getPolicyNumber() {
+        return PolicyNumber;
     }
 
-    public void setInjuryID(String injuryID) {
-        this.injuryID = injuryID;
+    public void setPolicyNumber(String policyNumber) {
+        PolicyNumber = policyNumber;
     }
 
-    public String getInjuryName() {
-        return injuryName;
+    public String getClaimNumber() {
+        return ClaimNumber;
     }
 
-    public void setInjuryName(String injuryName) {
-        this.injuryName = injuryName;
+    public void setClaimNumber(String claimNumber) {
+        ClaimNumber = claimNumber;
     }
 
-    public String getInjurySeverity() {
-        return injurySeverity;
+    public String getName() {
+        return Name;
     }
 
-    public void setInjurySeverity(String injurySeverity) {
-        this.injurySeverity = injurySeverity;
+    public void setName(String name) {
+        Name = name;
     }
 
-    public String getInjuryDescription() {
-        return injuryDescription;
+    public String getSeverity() {
+        return Severity;
     }
 
-    public void setInjuryDescription(String injuryDescription) {
-        this.injuryDescription = injuryDescription;
+    public void setSeverity(String severity) {
+        Severity = severity;
     }
+
+    public String getDescription() {
+        return Description;
+    }
+
+    public void setDescription(String description) {
+        Description = description;
+    }
+
+    private String Description;
+
 }
