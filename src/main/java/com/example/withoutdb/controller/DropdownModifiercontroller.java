@@ -8,13 +8,15 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/modifyDropdown")
 public class DropdownModifiercontroller {
 
-    @PostMapping("/add")
-    public String add(@RequestBody DropdownModifier dropdownModifier ) {
+
+    @PostMapping("/modify")
+    public String modify(@RequestBody DropdownModifier dropdownModifier ) {
         System.out.println("connection reached DropdownModifiercontroller");
 
         try {
+            DropdownModifier modifier = new DropdownModifier();
             System.out.println("dropdownModifiers: fg g" + dropdownModifier.getId());
-            dropdownModifier.modify();
+            modifier.modify(dropdownModifier);
         } catch (Exception e) {
             System.out.println(e);
         }
