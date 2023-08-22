@@ -8,10 +8,6 @@ public class AdditionalInsured {
     private String AdditionalInsuredType;
 
 
-    public String getAdditionalInsuredID() {
-        return AdditionalInsuredID;
-    }
-
     public void setAdditionalInsuredID(String additionalInsuredID) {
         AdditionalInsuredID = additionalInsuredID;
     }
@@ -38,5 +34,9 @@ public class AdditionalInsured {
 
     public void setAdditionalInsuredType(String additionalInsuredType) {
         AdditionalInsuredType = additionalInsuredType;
+    }
+
+    public String getAdditionalInsuredID() {
+        return AdditionalInsuredID;
     }
 }
