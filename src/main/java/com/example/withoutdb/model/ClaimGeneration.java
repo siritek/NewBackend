@@ -15,6 +15,18 @@ public class ClaimGeneration {
     private String dateOfReport;
     private String address1;
     private String lossDescription;
+    private String timeOfLoss;
+    private String reportedBy;
+    private String policyType;
+    private String effectiveDate;
+    private String expirationDate;
+    private String cancellationDate;
+    private String lossCause;
+    private String typeOfLoss;
+    private String address;
+    private String lossParty;
+    private String primaryCoverage;
+    private String exposuresStatus;
 
     // Constructor
     public ClaimGeneration() {
@@ -94,6 +106,102 @@ public class ClaimGeneration {
         this.lossDescription = lossDescription;
     }
 
+    public String getTimeOfLoss() {
+        return timeOfLoss;
+    }
+
+    public void setTimeOfLoss(String timeOfLoss) {
+        this.timeOfLoss = timeOfLoss;
+    }
+
+    public String getReportedBy() {
+        return reportedBy;
+    }
+
+    public void setReportedBy(String reportedBy) {
+        this.reportedBy = reportedBy;
+    }
+
+    public String getPolicyType() {
+        return policyType;
+    }
+
+    public void setPolicyType(String policyType) {
+        this.policyType = policyType;
+    }
+
+    public String getEffectiveDate() {
+        return effectiveDate;
+    }
+
+    public void setEffectiveDate(String effectiveDate) {
+        this.effectiveDate = effectiveDate;
+    }
+
+    public String getExpirationDate() {
+        return expirationDate;
+    }
+
+    public void setExpirationDate(String expirationDate) {
+        this.expirationDate = expirationDate;
+    }
+
+    public String getCancellationDate() {
+        return cancellationDate;
+    }
+
+    public void setCancellationDate(String cancellationDate) {
+        this.cancellationDate = cancellationDate;
+    }
+
+    public String getLossCause() {
+        return lossCause;
+    }
+
+    public void setLossCause(String lossCause) {
+        this.lossCause = lossCause;
+    }
+
+    public String getTypeOfLoss() {
+        return typeOfLoss;
+    }
+
+    public void setTypeOfLoss(String typeOfLoss) {
+        this.typeOfLoss = typeOfLoss;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getLossParty() {
+        return lossParty;
+    }
+
+    public void setLossParty(String lossParty) {
+        this.lossParty = lossParty;
+    }
+
+    public String getPrimaryCoverage() {
+        return primaryCoverage;
+    }
+
+    public void setPrimaryCoverage(String primaryCoverage) {
+        this.primaryCoverage = primaryCoverage;
+    }
+
+    public String getExposuresStatus() {
+        return exposuresStatus;
+    }
+
+    public void setExposuresStatus(String exposuresStatus) {
+        this.exposuresStatus = exposuresStatus;
+    }
+
     @Override
     public String toString() {
         return "ClaimGeneration{" +
@@ -106,6 +214,18 @@ public class ClaimGeneration {
                 ", dateOfReport='" + dateOfReport + '\'' +
                 ", address1='" + address1 + '\'' +
                 ", lossDescription='" + lossDescription + '\'' +
+                ", timeOfLoss='" + timeOfLoss + '\'' +
+                ", reportedBy='" + reportedBy + '\'' +
+                ", policyType='" + policyType + '\'' +
+                ", effectiveDate='" + effectiveDate + '\'' +
+                ", expirationDate='" + expirationDate + '\'' +
+                ", cancellationDate='" + cancellationDate + '\'' +
+                ", lossCause='" + lossCause + '\'' +
+                ", typeOfLoss='" + typeOfLoss + '\'' +
+                ", address='" + address + '\'' +
+                ", lossParty='" + lossParty + '\'' +
+                ", primaryCoverage='" + primaryCoverage + '\'' +
+                ", exposuresStatus='" + exposuresStatus + '\'' +
                 '}';
     }
 }

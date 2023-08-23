@@ -32,7 +32,7 @@ public class ClaimSynopsisController {
 
         try (Connection conn = dbConn.getMyConnection();
              PreparedStatement statement = conn.prepareStatement(
-                     "SELECT ClaimNumber, PolicyNumber, NAME, DateofLoss, Adjuster, DateReported, LossLocation, LossDescription FROM NXT_Master WHERE ClaimNumber = ?"
+                     "SELECT ClaimNumber, PolicyNumber, NAME, DateofLoss, Adjuster, DateReported, LossLocation, LossDescription, TimeofLoss, ReportedBy, PolicyType, EffectiveDate, ExpirationDate, CancellationDate, LossCause, TypeofLoss, Address, Lossparty, PrimaryCoverage, ExposuresStatus FROM NXT_Master WHERE ClaimNumber = ?"
              )) {
             statement.setString(1, claimNumber);
             //    statement.setString(2, policyNumber);
@@ -52,6 +52,22 @@ public class ClaimSynopsisController {
                     claimGeneration.setDateOfReport(dateReported.toString());
                     claimGeneration.setAddress1(rs.getString("LossLocation"));
                     claimGeneration.setLossDescription(rs.getString("LossDescription"));
+                    claimGeneration.setTimeOfLoss(rs.getString("TimeofLoss"));
+                    claimGeneration.setReportedBy(rs.getString("ReportedBy"));
+                    claimGeneration.setPolicyType(rs.getString("PolicyType"));
+                    LocalDateTime effectiveDate = rs.getTimestamp("EffectiveDate").toLocalDateTime();
+                    claimGeneration.setEffectiveDate(effectiveDate.toString());
+                    LocalDateTime expirationDate = rs.getTimestamp("ExpirationDate").toLocalDateTime();
+                    claimGeneration.setExpirationDate(expirationDate.toString());
+                    LocalDateTime cancellationDate = rs.getTimestamp("CancellationDate").toLocalDateTime();
+                    claimGeneration.setCancellationDate(cancellationDate.toString());
+                    claimGeneration.setLossCause(rs.getString("LossCause"));
+                    claimGeneration.setTypeOfLoss(rs.getString("TypeofLoss"));
+                    claimGeneration.setAddress(rs.getString("Address"));
+                    claimGeneration.setLossParty(rs.getString("LossParty"));
+                    claimGeneration.setPrimaryCoverage(rs.getString("PrimaryCoverage"));
+                    claimGeneration.setExposuresStatus(rs.getString("ExposuresStatus"));
+
 
                     claimLossList.add(claimGeneration);
                 }
