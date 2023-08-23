@@ -6,6 +6,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.Objects;
 
+
+
 public class DropdownModifier {
 
     public DropdownModifier() {
@@ -14,7 +16,7 @@ public class DropdownModifier {
         this.dropdownItem = dropdownItem;
     }
     private String method;
-    private String value;
+    private String addedValue;
     private String id;
     private String dropdownItem;
 
@@ -24,17 +26,21 @@ public class DropdownModifier {
     public void setDropdownItem(String dropdownItem) {
         this.dropdownItem = dropdownItem;
     }
+
     public String getMethod() {
         return method;
     }
+
     public void setMethod(String method) {
         this.method = method;
     }
-    public String getValue() {
-        return value;
+
+    public String getAddedValue() {
+        return addedValue;
     }
-    public void setValue(String value) {
-        this.value = value;
+
+    public void setAddedValue(String addedValue) {
+        this.addedValue = addedValue;
     }
 
     public String getId() {
@@ -46,22 +52,22 @@ public class DropdownModifier {
     }
 
     //method which will be called when user wants to modify dropdown values
-    public void modify() {
+    public void modify(DropdownModifier dropdownModifier) {
         System.out.println("Ready to modify");
         try{
             String method = getMethod();
             String dropdown = getDropdownItem();
-            String value = getValue();
+            String value = getAddedValue();
             System.out.println("method: " + method);
             System.out.println("value: " + value);
             System.out.println("dropdown value: " + dropdown+"    make sure that this field match the if statement so that it can put it in correct DB");
 
-            if(method.equals("ADD") && value!=null){
+            if(dropdown != null && method.equals("ADD") && value != null){
                 System.out.println("Ready to add value in DB");
-                setValue(value);
+                setAddedValue(value);
                 addIntoDB(value);
             }
-            else if(method.equals("DELETE")&& value!=null){
+            else if(dropdown != null && method.equals("DELETE")&& value!=null){
                 System.out.println("Ready to delete value in DB");
                 deleteIntoDB(value);
             }
@@ -84,61 +90,61 @@ public class DropdownModifier {
                 ps.close();
             }
             else if(Objects.equals(dropdownItem, "state")){
-                PreparedStatement ps = con.prepareStatement("INSERT INTO state(State) VALUES(?)");
+                PreparedStatement ps = con.prepareStatement("INSERT INTO State(state) VALUES(?)");
                 ps.setString(1, value);
                 System.out.println("PS: " + ps);
                 ps.executeQuery();
                 ps.close();
             }
-            else if(Objects.equals(dropdownItem, "RelationshiptoInsured")){
+            else if(Objects.equals(dropdownItem, "relationshiptoinsured")){
                 PreparedStatement ps = con.prepareStatement("INSERT INTO relationshiptoinsured(relationshiptoinsured) VALUES(?)");
                 ps.setString(1, value);
                 System.out.println("PS: " + ps);
                 ps.executeQuery();
                 ps.close();
             }
-            else if(Objects.equals(dropdownItem, "Security Type")){
+            else if(Objects.equals(dropdownItem, "securityType")){
                 PreparedStatement ps = con.prepareStatement("INSERT INTO securitytype(securitytype) VALUES(?)");
                 ps.setString(1, value);
                 System.out.println("PS: " + ps);
                 ps.executeQuery();
                 ps.close();
             }
-            else if(Objects.equals(dropdownItem, "Topic")){
+            else if(Objects.equals(dropdownItem, "topic")){
                 PreparedStatement ps = con.prepareStatement("INSERT INTO topic(topic) VALUES(?)");
                 ps.setString(1, value);
                 System.out.println("PS: " + ps);
                 ps.executeQuery();
                 ps.close();
             }
-            else if(Objects.equals(dropdownItem, "Relatedto")){
+            else if(Objects.equals(dropdownItem, "relatedTo")){
                 PreparedStatement ps = con.prepareStatement("INSERT INTO relatedto(relatedto) VALUES(?)");
                 ps.setString(1, value);
                 System.out.println("PS: " + ps);
                 ps.executeQuery();
                 ps.close();
             }
-            else if(Objects.equals(dropdownItem, "Status")){
+            else if(Objects.equals(dropdownItem, "exposureStatus")){
                 PreparedStatement ps = con.prepareStatement("INSERT INTO status(status) VALUES(?)");
                 ps.setString(1, value);
                 System.out.println("PS: " + ps);
                 ps.executeQuery();
                 ps.close();
             }
-            else if(Objects.equals(dropdownItem, "AssignedTo")){
+            else if(Objects.equals(dropdownItem, "assignedTo")){
                 PreparedStatement ps = con.prepareStatement("INSERT INTO assignedto(assignedto) VALUES(?)");
                 ps.setString(1, value);
                 System.out.println("PS: " + ps);
                 ps.executeQuery();
                 ps.close();
             }
-            else if(Objects.equals(dropdownItem, "CreatedBy")){
-                PreparedStatement ps = con.prepareStatement("INSERT INTO createdby(createdby) VALUES(?)");
-                ps.setString(1, value);
-                System.out.println("PS: " + ps);
-                ps.executeQuery();
-                ps.close();
-            }
+//            else if(Objects.equals(dropdownItem, "CreatedBy")){
+//                PreparedStatement ps = con.prepareStatement("INSERT INTO createdby(createdby) VALUES(?)");
+//                ps.setString(1, value);
+//                System.out.println("PS: " + ps);
+//                ps.executeQuery();
+//                ps.close();
+//            }
             else{
                 System.out.println("error method or value not specified");
             }
@@ -165,55 +171,55 @@ public class DropdownModifier {
                 System.out.println("PS: " + ps);
                 ps.executeQuery();
                 ps.close();
-            }else if(Objects.equals(dropdownItem, "RelationshiptoInsured")){
+            }else if(Objects.equals(dropdownItem, "relationshiptoinsured")){
                 PreparedStatement ps = con.prepareStatement("DELETE FROM relationshiptoinsured WHERE relationshiptoinsured = ?");
                 ps.setString(1, value);
                 System.out.println("PS: " + ps);
                 ps.executeQuery();
                 ps.close();
             }
-            else if(Objects.equals(dropdownItem, "Security Type")){
+            else if(Objects.equals(dropdownItem, "securitytype")){
                 PreparedStatement ps = con.prepareStatement("DELETE FROM securitytype WHERE securitytype = ?");
                 ps.setString(1, value);
                 System.out.println("PS: " + ps);
                 ps.executeQuery();
                 ps.close();
             }
-            else if(Objects.equals(dropdownItem, "Topic")){
+            else if(Objects.equals(dropdownItem, "topic")){
                 PreparedStatement ps = con.prepareStatement("DELETE FROM topic WHERE topic = ?");
                 ps.setString(1, value);
                 System.out.println("PS: " + ps);
                 ps.executeQuery();
                 ps.close();
             }
-            else if(Objects.equals(dropdownItem, "Relatedto")){
+            else if(Objects.equals(dropdownItem, "relatedto")){
                 PreparedStatement ps = con.prepareStatement("DELETE FROM relatedto WHERE relatedto = ?");
                 ps.setString(1, value);
                 System.out.println("PS: " + ps);
                 ps.executeQuery();
                 ps.close();
             }
-            else if(Objects.equals(dropdownItem, "Status")){
-                PreparedStatement ps = con.prepareStatement("DELETE FROM status WHERE status = ?");
+            else if(Objects.equals(dropdownItem, "exposureStatus")){
+                PreparedStatement ps = con.prepareStatement("DELETE FROM status WHERE exposurestatus = ?");
                 ps.setString(1, value);
                 System.out.println("PS: " + ps);
                 ps.executeQuery();
                 ps.close();
             }
-            else if(Objects.equals(dropdownItem, "AssignedTo")){
+            else if(Objects.equals(dropdownItem, "assignedTo")){
                 PreparedStatement ps = con.prepareStatement("DELETE FROM assignedto WHERE assignedto = ?");
                 ps.setString(1, value);
                 System.out.println("PS: " + ps);
                 ps.executeQuery();
                 ps.close();
             }
-            else if(Objects.equals(dropdownItem, "CreatedBy")){
-                PreparedStatement ps = con.prepareStatement("DELETE FROM createdby WHERE createdby = ?");
-                ps.setString(1, value);
-                System.out.println("PS: " + ps);
-                ps.executeQuery();
-                ps.close();
-            }
+//            else if(Objects.equals(dropdownItem, "CreatedBy")){
+//                PreparedStatement ps = con.prepareStatement("DELETE FROM createdby WHERE createdby = ?");
+//                ps.setString(1, value);
+//                System.out.println("PS: " + ps);
+//                ps.executeQuery();
+//                ps.close();
+//            }
             else{
                 System.out.println("error method or value not specified");
             }

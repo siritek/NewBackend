@@ -14,34 +14,38 @@ import java.util.Map;
 @Service
 public class AdminDropdownDAO {
     private DBConn dbConn = new DBConn();
-    public AdminDropdownDAO() {
-    }
+
+
     public static Map<String, List<String>> getAdminDropdownValues() {
-        Map<String, List<String>> typesMap = new HashMap<>();
-        List<String> Adjusters = new ArrayList<>();
-        List<String> claimanttypes = new ArrayList<>();
-        List<String> topics = new ArrayList<>();
-        List<String> securityTypes = new ArrayList<>();
-        List<String> relatedToValues = new ArrayList<>();
-        List<String> states = new ArrayList<>();
-        List<String> ExposureStatus = new ArrayList<>();
-        List<String> AssignedTo = new ArrayList<>();
-        List<String> CreatedBy = new ArrayList<>();
-        List<String> relationshiptoinsured = new ArrayList<>();
+            Map<String, List<String>> typesMap = new HashMap<>();
+            List<String> Adjusters = new ArrayList<>();
+            // List<String> claimanttypes = new ArrayList<>();
+            List<String> topics = new ArrayList<>();
+            List<String> securityTypes = new ArrayList<>();
+            List<String> relatedToValues = new ArrayList<>();
+            List<String> states = new ArrayList<>();
+            List<String> ExposureStatus = new ArrayList<>();
+            //List<String> AssignedTo = new ArrayList<>();
+            //  List<String> CreatedBy = new ArrayList<>();
+            List<String> relationshiptoinsured = new ArrayList<>();
+
+
 
 
         try{
-// get claimant types from claimanttype table
+
             Connection connection = DBConn.getMyConnection();
             System.out.println("Connection reached prepareStatement in AdminDropdownDAO");
-            PreparedStatement ps = connection.prepareStatement("SELECT ClaimantType_Value FROM claimanttype");
-            ResultSet rs = ps.executeQuery();
 
-            while (rs.next()) {
-                String claimantType = rs.getString("ClaimantType_Value");
-                claimanttypes.add(claimantType);
+            // get adjuster types from adjuster table
+            PreparedStatement adjusterStatement = connection.prepareStatement("SELECT id, Adjuster_Value FROM adjuster");
+            ResultSet adjusterResultSet = adjusterStatement.executeQuery();
+            while (adjusterResultSet.next()) {
+                String adjusterValue = adjusterResultSet.getString("Adjuster_Value");
+                Adjusters.add(adjusterValue);
             }
-            rs.close();
+            adjusterResultSet.close();
+            typesMap.put("adjuster", Adjusters);
 
             //get relationshiptoinsured values from relationshiptoinsured table
             PreparedStatement ps8 = connection.prepareStatement("SELECT RelationshiptoInsured_Value FROM relationshiptoinsured");
@@ -53,6 +57,8 @@ public class AdminDropdownDAO {
             rs8.close();
             typesMap.put("relationshiptoinsured", relationshiptoinsured);
 
+
+
             //get topics from topic table
             PreparedStatement ps9 = connection.prepareStatement("SELECT Name FROM topic");
             ResultSet rs9 = ps9.executeQuery();
@@ -62,6 +68,8 @@ public class AdminDropdownDAO {
             }
             rs9.close();
             typesMap.put("topic", topics);
+
+
 
             //get security types from securitytype table
             PreparedStatement ps10 = connection.prepareStatement("SELECT Name FROM securitytype");
@@ -73,6 +81,7 @@ public class AdminDropdownDAO {
             rs10.close();
             typesMap.put("securityType", securityTypes);
 
+            //get state types from state table
             PreparedStatement ps5 = connection.prepareStatement("SELECT State FROM state");
             ResultSet rs5 = ps5.executeQuery();
             while (rs5.next()) {
@@ -80,8 +89,7 @@ public class AdminDropdownDAO {
                 states.add(stateValue);
             }
             rs5.close();
-            // List<String> states;
-           // typesMap.put("state", states);
+            typesMap.put("state", states);
 
 
             //get relatedto values from relatedto table
@@ -95,14 +103,7 @@ public class AdminDropdownDAO {
             typesMap.put("relatedTo", relatedToValues);
 
 
-            PreparedStatement ps3 = connection.prepareStatement("SELECT Adjuster_Value FROM adjuster");
-            ResultSet rs3 = ps3.executeQuery();
-            while (rs3.next()) {
-                String adjuster = rs3.getString("Adjuster_Value");
-                Adjusters.add(adjuster);
-            }
-            rs3.close();
-
+            //get exposure_status values from exposure_status table
             PreparedStatement ps4 = connection.prepareStatement("SELECT exposure_status_value FROM exposure_status");
             ResultSet rs4 = ps4.executeQuery();
             while (rs4.next()) {
@@ -111,6 +112,7 @@ public class AdminDropdownDAO {
             }
             rs4.close();
             typesMap.put("exposureStatus", ExposureStatus);
+
 
             //get assignedto values from assignedto table
             List<String> assignedToValues = new ArrayList<>();
@@ -121,6 +123,51 @@ public class AdminDropdownDAO {
                 assignedToValues.add(assignedToValue);
             }
             rs13.close();
+            typesMap.put("assignedTo", assignedToValues);
+
+
+            System.out.println("Admin screen dropdowns "+typesMap);
+
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return typesMap;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+//            while (adjusterResultSet.next()) {
+//                Adjuster adjuster = new Adjuster();
+//                adjuster.setId(adjusterResultSet.getInt("id"));
+//                adjuster.setAdjusterValue(adjusterResultSet.getString("Adjuster_Value"));
+//                adjusters.add(adjuster);
+//            }
+
+//            PreparedStatement ps = connection.prepareStatement("SELECT id, type FROM claimanttype");
+//            ResultSet rs = ps.executeQuery();
+//
+//            while (rs.next()) {
+//                String claimantType = rs.getString("type");
+//                claimanttypes.add(claimantType);
+//            }
+//            rs.close();
+
+
+
+
 
 
 //        try {
@@ -133,7 +180,6 @@ public class AdminDropdownDAO {
 //                String adjusters = rs.getString("PolicyStatus_Value");
 //                adjuster.add(adjusters);
 //                System.out.println(adjusters);
-//            }
 //            rs.close();
 //
 //            PreparedStatement ps1 = con.prepareStatement("SELECT Name FROM topic");
@@ -156,16 +202,16 @@ public class AdminDropdownDAO {
 //            }
 //            rs2.close();
 
-            //typesMap.put("policyStatus", policyStatuss);
-            typesMap.put("state", states);
-            typesMap.put("adjuster", Adjusters);
-            typesMap.put("topic", topics);
-            typesMap.put("securityType", securityTypes);
-            typesMap.put("relatedTo", relatedToValues);
-            typesMap.put("status", ExposureStatus);
-            typesMap.put("assignedTo", assignedToValues);
-            typesMap.put("createdBy", CreatedBy);
-            typesMap.put("relationshiptoinsured", relationshiptoinsured);
+
+//typesMap.put("policyStatus", policyStatuss);
+
+//  typesMap.put("topic", topics);
+//typesMap.put("securityType", securityTypes);
+// typesMap.put("relatedTo", relatedToValues);
+//typesMap.put("status", ExposureStatus);
+
+// typesMap.put("createdBy", CreatedBy);
+// typesMap.put("relationshiptoinsured", relationshiptoinsured);
 
 
 
@@ -177,12 +223,3 @@ public class AdminDropdownDAO {
 //            typesMap.put("AssignedTo", AssignedTo);
 //            typesMap.put("CreatedBy", CreatedBy);
 //            typesMap.put("Relationshiptoinsured", Relationshiptoinsured);
-            System.out.println("Admin screen dropdowns "+typesMap);
-
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return typesMap; }
-}

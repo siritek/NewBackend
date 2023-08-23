@@ -35,11 +35,11 @@ public class ExposuresDAO {
 // get claimant types from claimanttype table
             Connection connection = DBConn.getMyConnection();
             System.out.println("Connection reached prepareStatement in exposuresDAO");
-            PreparedStatement ps = connection.prepareStatement("SELECT ClaimantType_Value FROM claimanttype");
+            PreparedStatement ps = connection.prepareStatement("SELECT id, type FROM claimanttype");
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                String claimantType = rs.getString("ClaimantType_Value");
+                String claimantType = rs.getString("type");
                 claimanttypes.add(claimantType);
             }
             rs.close();
@@ -97,11 +97,11 @@ public class ExposuresDAO {
 
 
             //get loss parties from lossparty table
-            PreparedStatement ps1 = connection.prepareStatement("SELECT LossParty_Value FROM lossparty");
+            PreparedStatement ps1 = connection.prepareStatement("SELECT id, type FROM lossparty");
             ResultSet rs1 = ps1.executeQuery();
 
             while (rs1.next()) {
-                String lossParty = rs1.getString("LossParty_Value");
+                String lossParty = rs1.getString("type");
                 lossparties.add(lossParty);
             }
             rs1.close();
