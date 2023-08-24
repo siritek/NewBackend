@@ -58,7 +58,7 @@ public class ExposureServiceImpl implements ExposureService {
                 x.setClaimant(rs.getString(6));
              //   x.setClaimanttype(rs.getString(7));
              //   x.setPrimaryphone(rs.getString(8));
-                x.setAddress(rs.getString(9));
+                //x.setAddress(rs.getString(9));
                 allexposures.add(x);
             }
             con.close();

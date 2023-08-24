@@ -18,7 +18,7 @@ public class CommonServiceImpl  implements  CommonService {
             Connection con = DBConn.getMyConnection();
             System.out.println("Connection reached Common Service");
 
-            PreparedStatement ps = con.prepareStatement("INSERT INTO NXT_Master (PolicyNumber, DateofLoss, LossLocation, TimeofLoss, Reportedby, DateReported,UnderwritingCompany, EffectiveDate,CancellationDate, ExpirationDate, PolicyStatus, PolicyType, Name, Address, PrimaryPhone, Adjuster, LossDescription, LossCause, TypeofLoss, WeatherInvolved, WeatherDescription, RelationshipToInsured, LossAddress, Countries, City, Zipcode, State, LossParty, PrimaryCoverage, ExposuresStatus, CreationDate, Claimant, ClaimantType,  ExposureAddress) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            PreparedStatement ps = con.prepareStatement("INSERT INTO NXT_Master (PolicyNumber, DateofLoss, LossLocation, TimeofLoss, Reportedby, DateReported,UnderwritingCompany, EffectiveDate,CancellationDate, ExpirationDate, PolicyStatus, PolicyType, Name, Address, PrimaryPhone, Adjuster, LossDescription, LossCause, TypeofLoss, WeatherInvolved, WeatherDescription, RelationshipToInsured, LossAddress, Countries, City, Zipcode, State, LossParty, PrimaryCoverage, ExposuresStatus, CreationDate, Claimant, ClaimantType) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
             ps.setString(1, fnol.getPolicyNumber());
             ps.setDate(2, Date.valueOf(dateTimeUtil.toDate(fnol.getDateOfLoss())));
@@ -60,7 +60,7 @@ public class CommonServiceImpl  implements  CommonService {
             ps.setDate(31, Date.valueOf(dateTimeUtil.toDate(exposure.getCreationDate())));
             ps.setString(32, exposure.getClaimant());
             ps.setString(33, exposure.getClaimantType());
-            ps.setString(34, exposure.getAddress());
+          //  ps.setString(34, exposure.getAddress());
 
             ps.executeUpdate(); // Execute the insert statement
 
@@ -99,8 +99,8 @@ public class CommonServiceImpl  implements  CommonService {
                     exposure.getStatus() + ", " +
                     dateTimeUtil.toDate(exposure.getCreationDate()) + ", " +
                     exposure.getClaimant() + ", " +
-                    exposure.getClaimantType() + ", " +
-                    exposure.getAddress());
+                    exposure.getClaimantType());
+                    //exposure.getAddress());
         } catch (SQLException e) {
             // Handle exceptions appropriately
             System.out.println("Exception in saveFnol method " + e);
