@@ -27,6 +27,10 @@ public class ClaimGeneration {
     private String lossParty;
     private String primaryCoverage;
     private String exposuresStatus;
+    private String countries;
+    private String city;
+    private String state;
+    private String zipcode;
 
     // Constructor
     public ClaimGeneration() {
@@ -202,6 +206,38 @@ public class ClaimGeneration {
         this.exposuresStatus = exposuresStatus;
     }
 
+    public String getCountries() {
+        return countries;
+    }
+
+    public void setCountries(String countries) {
+        this.countries = countries;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getZipcode() {
+        return zipcode;
+    }
+
+    public void setZipcode(String zipcode) {
+        this.zipcode = zipcode;
+    }
+
     @Override
     public String toString() {
         return "ClaimGeneration{" +
@@ -226,6 +262,10 @@ public class ClaimGeneration {
                 ", lossParty='" + lossParty + '\'' +
                 ", primaryCoverage='" + primaryCoverage + '\'' +
                 ", exposuresStatus='" + exposuresStatus + '\'' +
+                ", countries='" + countries + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", zipcode='" + zipcode + '\'' +
                 '}';
     }
 }
