@@ -12,7 +12,7 @@ public class Exposure {
     private String claimant;
     private String claimantType;
 
-    private String address;
+    //private String address;
 
 
     //getters setters
@@ -73,13 +73,13 @@ public class Exposure {
         this.claimantType = claimantType;
     }
 
-
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
 }
+
+//    public String getAddress() {
+//        return address;
+//    }
+//
+//    public void setAddress(String address) {
+//        this.address = address;
+//    }
+//}

@@ -42,12 +42,14 @@ public class CommonController {
 
     @PostMapping("/add")
     public String add(@RequestBody Common common){
+        String claimNumber = null;
         try {
             System.out.println("connection reached Common controller");
-            CommonService.saveCommon(common);
+            claimNumber = CommonService.saveCommon(common);
         } catch (Exception e) {
             System.out.println(e);
         }
-        return "";
+        System.out.println(claimNumber + " in controller");
+        return "{\"claimNumber\": \"" + claimNumber + "\"}";
     }
 }
