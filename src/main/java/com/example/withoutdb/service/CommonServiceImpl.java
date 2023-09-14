@@ -7,7 +7,8 @@ import java.util.List;
 
 public class CommonServiceImpl  implements  CommonService {
 
-    public void saveCommon(Common common) {
+    public String saveCommon(Common common) {
+        String claimNumber = null;
         try {
             Fnol fnol = common.getFnolData();
             Policyinformation policyinformation = common.getPolicyInfoData();
@@ -18,7 +19,7 @@ public class CommonServiceImpl  implements  CommonService {
             Connection con = DBConn.getMyConnection();
             System.out.println("Connection reached Common Service");
 
-            PreparedStatement ps = con.prepareStatement("INSERT INTO NXT_Master (PolicyNumber, DateofLoss, LossLocation, TimeofLoss, Reportedby, DateReported,UnderwritingCompany, EffectiveDate,CancellationDate, ExpirationDate, PolicyStatus, PolicyType, Name, Address, PrimaryPhone, Adjuster, LossDescription, LossCause, TypeofLoss, WeatherInvolved, WeatherDescription, RelationshipToInsured, LossAddress, Countries, City, Zipcode, State, LossParty, PrimaryCoverage, ExposuresStatus, CreationDate, Claimant, ClaimantType) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            PreparedStatement ps = con.prepareStatement("INSERT INTO NXT_Master (PolicyNumber, DateofLoss, LossLocation, TimeofLoss, Reportedby, DateReported,UnderwritingCompany, EffectiveDate,CancellationDate, ExpirationDate, PolicyStatus, PolicyType, Name, Address,    PrimaryPhone, Adjuster, LossDescription, LossCause, TypeofLoss, WeatherInvolved, WeatherDescription, RelationshipToInsured, LossAddress, Countries, City, Zipcode, State, LossParty, PrimaryCoverage, ExposuresStatus, CreationDate, Claimant, ClaimantType) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
             ps.setString(1, fnol.getPolicyNumber());
             ps.setDate(2, Date.valueOf(dateTimeUtil.toDate(fnol.getDateOfLoss())));
@@ -63,6 +64,7 @@ public class CommonServiceImpl  implements  CommonService {
           //  ps.setString(34, exposure.getAddress());
 
             ps.executeUpdate(); // Execute the insert statement
+            claimNumber = generateAndSaveClaimNumber(con, fnol.getPolicyNumber());
 
             System.out.println("Data inserted successfully,Inserted values: " + fnol.getPolicyNumber() + ", " +
                     dateTimeUtil.toDate(fnol.getDateOfLoss()) + ", " +
@@ -106,6 +108,44 @@ public class CommonServiceImpl  implements  CommonService {
             System.out.println("Exception in saveFnol method " + e);
 
         }
+
+
+
+        System.out.println("Claim Number: " + claimNumber);
+        return claimNumber;
+    }
+
+    private String generateAndSaveClaimNumber(Connection con, String policyNumber) throws SQLException {
+        String claimNumber = getNextClaimNumber(con);
+        saveNextClaimNumber(con, claimNumber, policyNumber);
+        return claimNumber;
+    }
+        private String getNextClaimNumber(Connection con) throws SQLException {
+            PreparedStatement ps = con.prepareStatement("SELECT MAX(ClaimNumber) FROM NXT_Master");
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            String lastClaimNumber = rs.getString(1);
+
+            if (lastClaimNumber == null) {
+                return "10000-000";
+            }
+
+            String[] parts = lastClaimNumber.split("-");
+            int mainPart = Integer.parseInt(parts[0]);
+            int sequenceNumber = Integer.parseInt(parts[1]) + 1;
+
+            String nextClaimNumber = String.format("%05d-%03d", mainPart, sequenceNumber);
+
+            System.out.println("Next Claim Number: " + nextClaimNumber); // Print the next claim number
+
+            return nextClaimNumber;    }
+
+        private void saveNextClaimNumber(Connection con, String nextClaimNumber, String policyNumber) throws
+        SQLException {
+            PreparedStatement ps = con.prepareStatement("UPDATE NXT_Master SET ClaimNumber = ? WHERE PolicyNumber = ?");
+            ps.setString(1, nextClaimNumber);
+            ps.setString(2, policyNumber);
+            ps.executeUpdate();
     }
 
     @Override

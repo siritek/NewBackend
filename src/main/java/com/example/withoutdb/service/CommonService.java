@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface CommonService {
 
-    public void saveCommon(Common common);
+    public String saveCommon(Common common);
 
     public List<Common> getAllcommons();
 }
