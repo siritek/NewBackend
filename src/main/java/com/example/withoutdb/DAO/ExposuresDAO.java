@@ -38,6 +38,7 @@ public class ExposuresDAO {
             PreparedStatement ps = connection.prepareStatement("SELECT id, type FROM claimanttype");
             ResultSet rs = ps.executeQuery();
 
+
             while (rs.next()) {
                 String claimantType = rs.getString("type");
                 claimanttypes.add(claimantType);
