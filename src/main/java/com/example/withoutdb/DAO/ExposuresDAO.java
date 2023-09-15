@@ -35,7 +35,7 @@ public class ExposuresDAO {
 // get claimant types from claimanttype table
             Connection connection = DBConn.getMyConnection();
             System.out.println("Connection reached prepareStatement in exposuresDAO");
-            PreparedStatement ps = connection.prepareStatement("SELECT id, type FROM type");
+            PreparedStatement ps = connection.prepareStatement("SELECT id, type FROM claimanttype");
             ResultSet rs = ps.executeQuery();
 
 
