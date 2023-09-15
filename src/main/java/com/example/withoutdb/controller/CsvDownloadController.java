@@ -3,6 +3,7 @@ package com.example.withoutdb.controller;
 import com.example.withoutdb.service.DBConn;
 import com.opencsv.CSVWriter;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
@@ -17,13 +18,17 @@ import java.sql.Statement;
 public class CsvDownloadController {
 
     @GetMapping("/download-csv")
-    public void downloadCSV(HttpServletResponse response) throws IOException {
+    public void downloadCSV(
+            @RequestParam(name = "claimNumber", required = true) String claimNumber,
+            HttpServletResponse response
+    ) throws IOException {
         response.setContentType("text/csv");
-        response.setHeader("Content-Disposition", "attachment; filename=nxt_master.csv");
+        response.setHeader("Content-Disposition", "attachment; filename=claim_data.csv");
 
         try (Connection connection = DBConn.getMyConnection();
              Statement statement = connection.createStatement();
-             ResultSet resultSet = statement.executeQuery("SELECT * FROM nxt_master")) {
+             ResultSet resultSet = statement.executeQuery("SELECT * FROM nxt_master WHERE ClaimNumber = '" + claimNumber + "'"
+             )) {
 
             PrintWriter writer = response.getWriter();
             CSVWriter csvWriter = new CSVWriter(writer);

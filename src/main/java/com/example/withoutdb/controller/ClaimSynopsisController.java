@@ -32,7 +32,7 @@ public class ClaimSynopsisController {
 
         try (Connection conn = dbConn.getMyConnection();
              PreparedStatement statement = conn.prepareStatement(
-                     "SELECT ClaimNumber, PolicyNumber, NAME, DateofLoss, Adjuster, DateReported, LossLocation, LossDescription, TimeofLoss, ReportedBy, PolicyType, EffectiveDate, ExpirationDate, CancellationDate, LossCause, TypeofLoss, Address, Lossparty, PrimaryCoverage, ExposuresStatus FROM NXT_Master WHERE ClaimNumber = ?"
+                     "SELECT ClaimNumber, PolicyNumber, NAME, DateofLoss, Adjuster, DateReported, LossLocation, LossDescription, TimeofLoss, ReportedBy, PolicyType, EffectiveDate, ExpirationDate, CancellationDate, LossCause, TypeofLoss, Address,City, State, Countries, Zipcode, Lossparty, PrimaryCoverage, ExposuresStatus FROM NXT_Master WHERE ClaimNumber = ?"
              )) {
             statement.setString(1, claimNumber);
             //    statement.setString(2, policyNumber);
@@ -64,9 +64,14 @@ public class ClaimSynopsisController {
                     claimGeneration.setLossCause(rs.getString("LossCause"));
                     claimGeneration.setTypeOfLoss(rs.getString("TypeofLoss"));
                     claimGeneration.setAddress(rs.getString("Address"));
+                    claimGeneration.setCity(rs.getString("City"));
+                    claimGeneration.setState(rs.getString("State"));
+                    claimGeneration.setCountries(rs.getString("Countries"));
+                    claimGeneration.setZipcode(rs.getString("Zipcode"));
                     claimGeneration.setLossParty(rs.getString("LossParty"));
                     claimGeneration.setPrimaryCoverage(rs.getString("PrimaryCoverage"));
                     claimGeneration.setExposuresStatus(rs.getString("ExposuresStatus"));
+
 
 
                     claimLossList.add(claimGeneration);
