@@ -39,7 +39,7 @@ public class SendClaimtoGWCCcontroller {
             String claimNumber = claimPayload.getClaimNumber();
             String jsonPayload = getPaylodforCCintegration(policyNumber, claimNumber);
             System.out.println("claim number is " + claimNumber);
-            String basePath = "C:\\TestClaim\\";
+           String basePath = "C:\\TestClaim\\";
             String fileName = CreateClaimFileGWCC.createUniqueClaimFile(basePath);
             CreateClaimFileGWCC.writeJsonToFile(jsonPayload, basePath, fileName);
 
@@ -75,13 +75,13 @@ public class SendClaimtoGWCCcontroller {
                 payload.setBaseClaimNumber(rs.getString("ClaimNumber"));
                 payload.setPolicyNumber(rs.getString("PolicyNumber"));
                 //payload.setDescription(rs.getString("LossDescription"));
-                payload.setDateOfLoss(rs.getString("DateOfLoss"));
+                payload.setLossDate(rs.getString("dateOfLoss"));
                 payload.setLossLocation(rs.getString("LossLocation"));
                 //payload.setLossTime(rs.getString("TimeofLoss"));
-               // payload.setReportedBy(rs.getString("ReportedBy"));
-                payload.setDateOfReport(rs.getString("DateReported"));
+                payload.setReportedBy(rs.getString("ReportedBy"));
+                payload.setReportDate(rs.getString("DateReported"));
 
-                payload.setDateOfLoss(rs.getString("DateOfLoss"));
+                payload.setLossDate(rs.getString("DateOfLoss"));
                // payload.setLossTime(rs.getString("TimeofLoss"));
 
                 payload.setName(rs.getString("Name"));
@@ -99,11 +99,11 @@ public class SendClaimtoGWCCcontroller {
                 String randomStringaa = UUID.randomUUID().toString().substring(0, 4);
                 payload.setWeatherDescription(randomStringaa);
 
-                payload.setCountries("US");
+                payload.setCountry("US");
                 payload.setCity(rs.getString("City"));
                 payload.setState("AZ");
                 payload.setZipcode("60067");
-                payload.setDateOfLoss(rs.getString("DateOfLoss"));
+                payload.setLossDate(rs.getString("DateOfLoss"));
                // payload.setTimeOfLoss(rs.getString("TimeOfLoss"));
                 //payload.setReportedBy(rs.getString("ReportedBy"));
                 payload.setRelationshipToInsured("insured");

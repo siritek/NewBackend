@@ -41,7 +41,7 @@ public class GwTransactionServiceImpl implements GwTransactionService {
         List<GwTransaction> allGwTransactions = new ArrayList<GwTransaction>();
         try {
             Connection con = DBConn.getMyConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM nxt_gwtransaction");
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM gwccresponsetable");
             ResultSet rs = ps.executeQuery();
             GwTransaction x = null;
 

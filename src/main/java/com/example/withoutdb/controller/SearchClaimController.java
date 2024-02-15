@@ -11,7 +11,7 @@ import com.example.withoutdb.model.SearchClaim;
 import com.example.withoutdb.service.SearchClaimServiceImpl;
 
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:8090"})
 @RestController
 @RequestMapping("/searchclaimfirst")
 

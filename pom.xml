@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.7.12</version>
-		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>withoutdb</artifactId>
+	<artifactId>nxtapp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>withoutdb</name>
+	<name>nxtapp</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
@@ -21,6 +20,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
+
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -30,6 +30,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
 		<dependency>
 			<groupId>com.opencsv</groupId>
 			<artifactId>opencsv</artifactId>
@@ -46,11 +52,11 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-        <dependency>
-            <groupId>cn.nikeo.jsonBuilder</groupId>
-            <artifactId>jsonBuilder</artifactId>
-            <version>0.2.0</version>
-        </dependency>
+		<dependency>
+			<groupId>cn.nikeo.jsonBuilder</groupId>
+			<artifactId>jsonBuilder</artifactId>
+			<version>0.2.0</version>
+		</dependency>
 		<dependency>
 			<groupId>com.github.holgerbrandl</groupId>
 			<artifactId>jsonbuilder</artifactId>
@@ -69,7 +75,248 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-		</plugins>
-	</build>
 
+<!--		<plugin>-->
+<!--			<groupId>com.github.eirslett</groupId>-->
+<!--			<artifactId>frontend-maven-plugin</artifactId>-->
+<!--			<version>1.12.0</version>-->
+<!--			<configuration>-->
+<!--				<workingDirectory>${project.basedir}/../NewFrontend</workingDirectory>-->
+<!--				<nodeVersion>v14.15.0</nodeVersion>-->
+<!--				<npmVersion>6.14.8</npmVersion>-->
+<!--			</configuration>-->
+<!--			<executions>-->
+<!--				<execution>-->
+<!--					<id>install node and npm</id>-->
+<!--					<goals>-->
+<!--						<goal>install-node-and-npm</goal>-->
+<!--					</goals>-->
+<!--					<configuration>-->
+<!--						<nodeVersion>v14.15.0</nodeVersion>-->
+<!--						<npmVersion>6.14.8</npmVersion>-->
+<!--					</configuration>-->
+<!--				</execution>-->
+<!--				<execution>-->
+<!--					<id>npm install</id>-->
+<!--					<goals>-->
+<!--						<goal>npm</goal>-->
+<!--					</goals>-->
+<!--					<configuration>-->
+<!--						<arguments>install</arguments>-->
+<!--					</configuration>-->
+<!--				</execution>-->
+<!--				<execution>-->
+<!--					<id>npm run build</id>-->
+<!--					<goals>-->
+<!--						<goal>npm</goal>-->
+<!--					</goals>-->
+<!--					<configuration>-->
+<!--						<arguments>run build</arguments>-->
+<!--					</configuration>-->
+<!--				</execution>-->
+<!--			</executions>-->
+<!--		</plugin>-->
+	</plugins>
+		<finalName>${project.artifactId}</finalName>
+	</build>
+	<packaging>war</packaging>
 </project>
+
+
+
+		<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<project xmlns="http://maven.apache.org/POM/4.0.0"-->
+<!--		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+<!--		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">-->
+<!--	<modelVersion>4.0.0</modelVersion>-->
+<!--	<parent>-->
+<!--		<groupId>org.springframework.boot</groupId>-->
+<!--		<artifactId>spring-boot-starter-parent</artifactId>-->
+<!--		<version>2.7.12</version>-->
+<!--		<relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
+<!--	</parent>-->
+<!--	<groupId>com.example</groupId>-->
+<!--	<artifactId>withoutdb</artifactId>-->
+<!--	<version>0.0.1-SNAPSHOT</version>-->
+<!--	<name>withoutdb</name>-->
+<!--	<description>Demo project for Spring Boot</description>-->
+<!--	<properties>-->
+<!--		<java.version>11</java.version>-->
+<!--	</properties>-->
+<!--	<dependencies>-->
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.boot</groupId>-->
+<!--			<artifactId>spring-boot-starter</artifactId>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>mysql</groupId>-->
+<!--			<artifactId>mysql-connector-java</artifactId>-->
+<!--			<version>8.0.28</version>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.boot</groupId>-->
+<!--			<artifactId>spring-boot-starter-web</artifactId>-->
+<!--			&lt;!&ndash; Exclude the embedded Tomcat dependency &ndash;&gt;-->
+<!--			<exclusions>-->
+<!--				<exclusion>-->
+<!--					<groupId>org.springframework.boot</groupId>-->
+<!--					<artifactId>spring-boot-starter-tomcat</artifactId>-->
+<!--				</exclusion>-->
+<!--			</exclusions>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>com.opencsv</groupId>-->
+<!--			<artifactId>opencsv</artifactId>-->
+<!--			<version>5.5.2</version>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>com.google.code.gson</groupId>-->
+<!--			<artifactId>gson</artifactId>-->
+<!--			<version>2.10.1</version>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.boot</groupId>-->
+<!--			<artifactId>spring-boot-starter-test</artifactId>-->
+<!--			<scope>test</scope>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>cn.nikeo.jsonBuilder</groupId>-->
+<!--			<artifactId>jsonBuilder</artifactId>-->
+<!--			<version>0.2.0</version>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>com.github.holgerbrandl</groupId>-->
+<!--			<artifactId>jsonbuilder</artifactId>-->
+<!--			<version>0.10</version>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>com.51degrees</groupId>-->
+<!--			<artifactId>pipeline.jsonbuilder</artifactId>-->
+<!--			<version>4.4.19</version>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>javax.servlet</groupId>-->
+<!--			<artifactId>javax.servlet-api</artifactId>-->
+<!--			<version>4.0.1</version> &lt;!&ndash; or the version compatible with your Servlet API &ndash;&gt;-->
+<!--			<scope>provided</scope>-->
+<!--		</dependency>-->
+
+<!--	</dependencies>-->
+
+<!--	<build>-->
+<!--		<plugins>-->
+<!--			&lt;!&ndash; Specify packaging as a WAR file &ndash;&gt;-->
+<!--			<plugin>-->
+<!--				<groupId>org.springframework.boot</groupId>-->
+<!--				<artifactId>spring-boot-maven-plugin</artifactId>-->
+<!--				<executions>-->
+<!--					<execution>-->
+<!--						<goals>-->
+<!--							<goal>repackage</goal>-->
+<!--						</goals>-->
+<!--						<configuration>-->
+<!--							<packaging>war</packaging>-->
+<!--						</configuration>-->
+<!--					</execution>-->
+<!--				</executions>-->
+<!--			</plugin>-->
+<!--		</plugins>-->
+<!--	</build>-->
+
+<!--	&lt;!&ndash; Specify packaging as a WAR file &ndash;&gt;-->
+<!--	<packaging>war</packaging>-->
+<!--</project>-->
+
+
+		<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<project xmlns="http://maven.apache.org/POM/4.0.0"-->
+<!--		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+<!--		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">-->
+<!--	<modelVersion>4.0.0</modelVersion>-->
+<!--	<parent>-->
+<!--		<groupId>org.springframework.boot</groupId>-->
+<!--		<artifactId>spring-boot-starter-parent</artifactId>-->
+<!--		<version>2.7.12</version>-->
+<!--		<relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
+<!--	</parent>-->
+<!--	<groupId>com.example</groupId>-->
+<!--	<artifactId>withoutdb</artifactId>-->
+<!--	<version>0.0.1-SNAPSHOT</version>-->
+<!--	<name>withoutdb</name>-->
+<!--	<description>Demo project for Spring Boot</description>-->
+<!--	<properties>-->
+<!--		<java.version>11</java.version>-->
+<!--	</properties>-->
+<!--	<dependencies>-->
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.boot</groupId>-->
+<!--			<artifactId>spring-boot-starter</artifactId>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>mysql</groupId>-->
+<!--			<artifactId>mysql-connector-java</artifactId>-->
+<!--			<version>8.0.28</version>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.boot</groupId>-->
+<!--			<artifactId>spring-boot-starter-web</artifactId>-->
+<!--			&lt;!&ndash; Exclude the embedded Tomcat dependency &ndash;&gt;-->
+<!--			<exclusions>-->
+<!--				<exclusion>-->
+<!--					<groupId>org.springframework.boot</groupId>-->
+<!--					<artifactId>spring-boot-starter-tomcat</artifactId>-->
+<!--				</exclusion>-->
+<!--			</exclusions>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>com.opencsv</groupId>-->
+<!--			<artifactId>opencsv</artifactId>-->
+<!--			<version>5.5.2</version>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>com.google.code.gson</groupId>-->
+<!--			<artifactId>gson</artifactId>-->
+<!--			<version>2.10.1</version>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.boot</groupId>-->
+<!--			<artifactId>spring-boot-starter-test</artifactId>-->
+<!--			<scope>test</scope>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>cn.nikeo.jsonBuilder</groupId>-->
+<!--			<artifactId>jsonBuilder</artifactId>-->
+<!--			<version>0.2.0</version>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>com.github.holgerbrandl</groupId>-->
+<!--			<artifactId>jsonbuilder</artifactId>-->
+<!--			<version>0.10</version>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>com.51degrees</groupId>-->
+<!--			<artifactId>pipeline.jsonbuilder</artifactId>-->
+<!--			<version>4.4.19</version>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>javax.servlet</groupId>-->
+<!--			<artifactId>javax.servlet-api</artifactId>-->
+<!--			<version>4.0.1</version> &lt;!&ndash; or the version compatible with your Servlet API &ndash;&gt;-->
+<!--			<scope>provided</scope>-->
+<!--		</dependency>-->
+
+<!--	</dependencies>-->
+
+<!--	<build>-->
+<!--		<plugins>-->
+<!--			<plugin>-->
+<!--				<groupId>org.springframework.boot</groupId>-->
+<!--				<artifactId>spring-boot-maven-plugin</artifactId>-->
+<!--			</plugin>-->
+<!--		</plugins>-->
+<!--	</build>-->
+
+<!--	&lt;!&ndash; Specify packaging as a WAR file &ndash;&gt;-->
+<!--	<packaging>war</packaging>-->
+<!--</project>-->
+

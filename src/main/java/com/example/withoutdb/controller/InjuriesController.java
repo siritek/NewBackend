@@ -5,7 +5,7 @@ import com.example.withoutdb.service.InjuriesServiceImpl;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import com.fasterxml.jackson.databind.ObjectMapper;
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:8090"})
 @RestController
 @RequestMapping("/injuries")
 public class InjuriesController {

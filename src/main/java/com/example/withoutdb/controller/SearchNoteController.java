@@ -7,7 +7,7 @@ import com.example.withoutdb.service.SearchNoteServiceImpl;
 import org.springframework.web.bind.annotation.*;
 import  com.example.withoutdb.service.SearchNoteService;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:8090"})
 @RestController
 @RequestMapping("/searchnotefirst")
 public class SearchNoteController

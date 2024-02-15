@@ -11,7 +11,7 @@ import java.util.List;
 import java.sql.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:8090"})
 @RestController
 @RequestMapping("/nxt_gwtransaction")
 public class GwTransactionController
